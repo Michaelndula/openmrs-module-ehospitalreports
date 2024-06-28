@@ -38,7 +38,7 @@ import org.openmrs.module.ehospitalreports.reporting.library.data.definition.Las
 import org.openmrs.module.ehospitalreports.reporting.library.data.definition.LastVLDataDefinition;
 
 @Component
-public class EligibleForVLDatasetDefinition extends SsemrBaseDataSet {
+public class EligibleForVLDatasetDefinition extends eHospitalBaseDataSet {
 	
 	private DataDefinition personPayamAddress() {
 		CalculationDataDefinition cd = new CalculationDataDefinition("payam", new PayamAddressCalculation());

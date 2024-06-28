@@ -1,12 +1,12 @@
 package org.openmrs.module.ehospitalreports.reporting.library.datasets;
 
-import static org.openmrs.module.ehospitalreports.reporting.utils.SsemrReportUtils.map;
+import static org.openmrs.module.ehospitalreports.reporting.utils.eHospitalReportUtils.map;
 
 import org.openmrs.module.reporting.dataset.definition.CohortIndicatorDataSetDefinition;
 import org.openmrs.module.reporting.dataset.definition.DataSetDefinition;
 import org.openmrs.module.ehospitalreports.reporting.library.cohorts.ArtCohortQueries;
 import org.openmrs.module.ehospitalreports.reporting.library.cohorts.CommonCohortQueries;
-import org.openmrs.module.ehospitalreports.reporting.library.dimension.SsemrCommonDimension;
+import org.openmrs.module.ehospitalreports.reporting.library.dimension.eHospitalCommonDimension;
 import org.openmrs.module.ehospitalreports.reporting.library.indicator.SsemrGeneralIndicator;
 import org.openmrs.module.ehospitalreports.reporting.utils.constants.reports.art.ArtReportsConstants;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +16,9 @@ import java.util.Arrays;
 import java.util.List;
 
 @Component
-public class ArtDatasetDefinition extends SsemrBaseDataSet {
+public class ArtDatasetDefinition extends eHospitalBaseDataSet {
 	
-	private final SsemrCommonDimension dimension;
+	private final eHospitalCommonDimension dimension;
 	
 	private final SsemrGeneralIndicator indicator;
 	
@@ -26,115 +26,115 @@ public class ArtDatasetDefinition extends SsemrBaseDataSet {
 	
 	private final CommonCohortQueries commonCohortQueries;
 	
-	SsemrBaseDataSet.ColumnParameters subTotalMales = new SsemrBaseDataSet.ColumnParameters(null, "Total, male", "gender=M",
+	eHospitalBaseDataSet.ColumnParameters subTotalMales = new eHospitalBaseDataSet.ColumnParameters(null, "Total, male", "gender=M",
 	        "");
 	
-	SsemrBaseDataSet.ColumnParameters subTotalFemales = new SsemrBaseDataSet.ColumnParameters(null, "Total, female",
+	eHospitalBaseDataSet.ColumnParameters subTotalFemales = new eHospitalBaseDataSet.ColumnParameters(null, "Total, female",
 	        "gender=F", "");
 	
-	SsemrBaseDataSet.ColumnParameters maleInfants = new SsemrBaseDataSet.ColumnParameters(null, "<1, Male",
+	eHospitalBaseDataSet.ColumnParameters maleInfants = new eHospitalBaseDataSet.ColumnParameters(null, "<1, Male",
 	        "gender=M|age=<1", "");
 	
-	SsemrBaseDataSet.ColumnParameters femaleInfants = new SsemrBaseDataSet.ColumnParameters(null, "<1, Female",
+	eHospitalBaseDataSet.ColumnParameters femaleInfants = new eHospitalBaseDataSet.ColumnParameters(null, "<1, Female",
 	        "gender=F|age=<1", "");
 	
-	SsemrBaseDataSet.ColumnParameters male_1_to_4 = new SsemrBaseDataSet.ColumnParameters(null, "1-4, Male",
+	eHospitalBaseDataSet.ColumnParameters male_1_to_4 = new eHospitalBaseDataSet.ColumnParameters(null, "1-4, Male",
 	        "gender=M|age=1-4", "");
 	
-	SsemrBaseDataSet.ColumnParameters female_1_to_4 = new SsemrBaseDataSet.ColumnParameters(null, "1-4, Female",
+	eHospitalBaseDataSet.ColumnParameters female_1_to_4 = new eHospitalBaseDataSet.ColumnParameters(null, "1-4, Female",
 	        "gender=F|age=1-4", "");
 	
-	SsemrBaseDataSet.ColumnParameters male_5_to_9 = new SsemrBaseDataSet.ColumnParameters(null, "5-9, Male",
+	eHospitalBaseDataSet.ColumnParameters male_5_to_9 = new eHospitalBaseDataSet.ColumnParameters(null, "5-9, Male",
 	        "gender=M|age=5-9", "");
 	
-	SsemrBaseDataSet.ColumnParameters female_5_to_9 = new SsemrBaseDataSet.ColumnParameters(null, "5-9, Female",
+	eHospitalBaseDataSet.ColumnParameters female_5_to_9 = new eHospitalBaseDataSet.ColumnParameters(null, "5-9, Female",
 	        "gender=F|age=5-9", "");
 	
-	SsemrBaseDataSet.ColumnParameters male_0_to_9 = new SsemrBaseDataSet.ColumnParameters(null, "0-9, Male",
+	eHospitalBaseDataSet.ColumnParameters male_0_to_9 = new eHospitalBaseDataSet.ColumnParameters(null, "0-9, Male",
 	        "gender=M|age=0-9", "");
 	
-	SsemrBaseDataSet.ColumnParameters female_0_to_9 = new SsemrBaseDataSet.ColumnParameters(null, "0-9, Female",
+	eHospitalBaseDataSet.ColumnParameters female_0_to_9 = new eHospitalBaseDataSet.ColumnParameters(null, "0-9, Female",
 	        "gender=F|age=0-9", "");
 	
-	SsemrBaseDataSet.ColumnParameters male_10_to_14 = new SsemrBaseDataSet.ColumnParameters(null, "10-14, Male",
+	eHospitalBaseDataSet.ColumnParameters male_10_to_14 = new eHospitalBaseDataSet.ColumnParameters(null, "10-14, Male",
 	        "gender=M|age=10-14", "");
 	
-	SsemrBaseDataSet.ColumnParameters female_10_to_14 = new SsemrBaseDataSet.ColumnParameters(null, "10-14, Female",
+	eHospitalBaseDataSet.ColumnParameters female_10_to_14 = new eHospitalBaseDataSet.ColumnParameters(null, "10-14, Female",
 	        "gender=F|age=10-14", "");
 	
-	SsemrBaseDataSet.ColumnParameters p10_to_14 = new SsemrBaseDataSet.ColumnParameters(null, "10-14", "age=10-14", "");
+	eHospitalBaseDataSet.ColumnParameters p10_to_14 = new eHospitalBaseDataSet.ColumnParameters(null, "10-14", "age=10-14", "");
 	
-	SsemrBaseDataSet.ColumnParameters male_15_to_19 = new SsemrBaseDataSet.ColumnParameters(null, "15-19, Male",
+	eHospitalBaseDataSet.ColumnParameters male_15_to_19 = new eHospitalBaseDataSet.ColumnParameters(null, "15-19, Male",
 	        "gender=M|age=15-19", "");
 	
-	SsemrBaseDataSet.ColumnParameters female_15_to_19 = new SsemrBaseDataSet.ColumnParameters(null, "15-19, Female",
+	eHospitalBaseDataSet.ColumnParameters female_15_to_19 = new eHospitalBaseDataSet.ColumnParameters(null, "15-19, Female",
 	        "gender=F|age=15-19", "");
 	
-	SsemrBaseDataSet.ColumnParameters p15_to_19 = new SsemrBaseDataSet.ColumnParameters(null, "15-19", "age=15-19", "");
+	eHospitalBaseDataSet.ColumnParameters p15_to_19 = new eHospitalBaseDataSet.ColumnParameters(null, "15-19", "age=15-19", "");
 	
-	SsemrBaseDataSet.ColumnParameters male_15_to_49 = new SsemrBaseDataSet.ColumnParameters(null, "15-49, Male",
+	eHospitalBaseDataSet.ColumnParameters male_15_to_49 = new eHospitalBaseDataSet.ColumnParameters(null, "15-49, Male",
 	        "gender=M|age=15-49", "");
 	
-	SsemrBaseDataSet.ColumnParameters female_15_to_49 = new SsemrBaseDataSet.ColumnParameters(null, "15-49, Female",
+	eHospitalBaseDataSet.ColumnParameters female_15_to_49 = new eHospitalBaseDataSet.ColumnParameters(null, "15-49, Female",
 	        "gender=F|age=15-49", "");
 	
-	SsemrBaseDataSet.ColumnParameters male_20_to_24 = new SsemrBaseDataSet.ColumnParameters(null, "20-24, Male",
+	eHospitalBaseDataSet.ColumnParameters male_20_to_24 = new eHospitalBaseDataSet.ColumnParameters(null, "20-24, Male",
 	        "gender=M|age=20-24", "");
 	
-	SsemrBaseDataSet.ColumnParameters female_20_to_24 = new SsemrBaseDataSet.ColumnParameters(null, "20-24, Female",
+	eHospitalBaseDataSet.ColumnParameters female_20_to_24 = new eHospitalBaseDataSet.ColumnParameters(null, "20-24, Female",
 	        "gender=F|age=20-24", "");
 	
-	SsemrBaseDataSet.ColumnParameters p20_to_24 = new SsemrBaseDataSet.ColumnParameters(null, "20-24", "age=20-24", "");
+	eHospitalBaseDataSet.ColumnParameters p20_to_24 = new eHospitalBaseDataSet.ColumnParameters(null, "20-24", "age=20-24", "");
 	
-	SsemrBaseDataSet.ColumnParameters male_25_to_29 = new SsemrBaseDataSet.ColumnParameters(null, "25-29, Male",
+	eHospitalBaseDataSet.ColumnParameters male_25_to_29 = new eHospitalBaseDataSet.ColumnParameters(null, "25-29, Male",
 	        "gender=M|age=25-29", "");
 	
-	SsemrBaseDataSet.ColumnParameters female_25_to_29 = new SsemrBaseDataSet.ColumnParameters(null, "25-29, Female",
+	eHospitalBaseDataSet.ColumnParameters female_25_to_29 = new eHospitalBaseDataSet.ColumnParameters(null, "25-29, Female",
 	        "gender=F|age=25-29", "");
 	
-	SsemrBaseDataSet.ColumnParameters p25_to_29 = new SsemrBaseDataSet.ColumnParameters(null, "25-29", "age=25-29", "");
+	eHospitalBaseDataSet.ColumnParameters p25_to_29 = new eHospitalBaseDataSet.ColumnParameters(null, "25-29", "age=25-29", "");
 	
-	SsemrBaseDataSet.ColumnParameters male_30_to_34 = new SsemrBaseDataSet.ColumnParameters(null, "30-34, Male",
+	eHospitalBaseDataSet.ColumnParameters male_30_to_34 = new eHospitalBaseDataSet.ColumnParameters(null, "30-34, Male",
 	        "gender=M|age=30-34", "");
 	
-	SsemrBaseDataSet.ColumnParameters female_30_to_34 = new SsemrBaseDataSet.ColumnParameters(null, "30-34, Female",
+	eHospitalBaseDataSet.ColumnParameters female_30_to_34 = new eHospitalBaseDataSet.ColumnParameters(null, "30-34, Female",
 	        "gender=F|age=30-34", "");
 	
-	SsemrBaseDataSet.ColumnParameters p30_to_34 = new SsemrBaseDataSet.ColumnParameters(null, "30-34", "age=30-34", "");
+	eHospitalBaseDataSet.ColumnParameters p30_to_34 = new eHospitalBaseDataSet.ColumnParameters(null, "30-34", "age=30-34", "");
 	
-	SsemrBaseDataSet.ColumnParameters male_35_to_39 = new SsemrBaseDataSet.ColumnParameters(null, "35-39, Male",
+	eHospitalBaseDataSet.ColumnParameters male_35_to_39 = new eHospitalBaseDataSet.ColumnParameters(null, "35-39, Male",
 	        "gender=M|age=35-39", "");
 	
-	SsemrBaseDataSet.ColumnParameters female_35_to_39 = new SsemrBaseDataSet.ColumnParameters(null, "35-39, Female",
+	eHospitalBaseDataSet.ColumnParameters female_35_to_39 = new eHospitalBaseDataSet.ColumnParameters(null, "35-39, Female",
 	        "gender=F|age=35-39", "");
 	
-	SsemrBaseDataSet.ColumnParameters p35_to_39 = new SsemrBaseDataSet.ColumnParameters(null, "35-39", "age=35-39", "");
+	eHospitalBaseDataSet.ColumnParameters p35_to_39 = new eHospitalBaseDataSet.ColumnParameters(null, "35-39", "age=35-39", "");
 	
-	SsemrBaseDataSet.ColumnParameters male_40_to_44 = new SsemrBaseDataSet.ColumnParameters(null, "40-44, Male",
+	eHospitalBaseDataSet.ColumnParameters male_40_to_44 = new eHospitalBaseDataSet.ColumnParameters(null, "40-44, Male",
 	        "gender=M|age=40-44", "");
 	
-	SsemrBaseDataSet.ColumnParameters female_40_to_44 = new SsemrBaseDataSet.ColumnParameters(null, "40-44, Female",
+	eHospitalBaseDataSet.ColumnParameters female_40_to_44 = new eHospitalBaseDataSet.ColumnParameters(null, "40-44, Female",
 	        "gender=F|age=40-44", "");
 	
-	SsemrBaseDataSet.ColumnParameters p40_to_44 = new SsemrBaseDataSet.ColumnParameters(null, "40-44", "age=40-44", "");
+	eHospitalBaseDataSet.ColumnParameters p40_to_44 = new eHospitalBaseDataSet.ColumnParameters(null, "40-44", "age=40-44", "");
 	
-	SsemrBaseDataSet.ColumnParameters male_45_to_49 = new SsemrBaseDataSet.ColumnParameters(null, "45-49, Male",
+	eHospitalBaseDataSet.ColumnParameters male_45_to_49 = new eHospitalBaseDataSet.ColumnParameters(null, "45-49, Male",
 	        "gender=M|age=45-49", "");
 	
-	SsemrBaseDataSet.ColumnParameters female_45_to_49 = new SsemrBaseDataSet.ColumnParameters(null, "45-49, Female",
+	eHospitalBaseDataSet.ColumnParameters female_45_to_49 = new eHospitalBaseDataSet.ColumnParameters(null, "45-49, Female",
 	        "gender=F|age=45-49", "");
 	
-	SsemrBaseDataSet.ColumnParameters p45_to_49 = new SsemrBaseDataSet.ColumnParameters(null, "45-49", "age=45-49", "");
+	eHospitalBaseDataSet.ColumnParameters p45_to_49 = new eHospitalBaseDataSet.ColumnParameters(null, "45-49", "age=45-49", "");
 	
-	SsemrBaseDataSet.ColumnParameters male_50_plus = new SsemrBaseDataSet.ColumnParameters(null, "50+, Male",
+	eHospitalBaseDataSet.ColumnParameters male_50_plus = new eHospitalBaseDataSet.ColumnParameters(null, "50+, Male",
 	        "gender=M|age=50+", "");
 	
-	SsemrBaseDataSet.ColumnParameters female_50_plus = new SsemrBaseDataSet.ColumnParameters(null, "50+, Female",
+	eHospitalBaseDataSet.ColumnParameters female_50_plus = new eHospitalBaseDataSet.ColumnParameters(null, "50+, Female",
 	        "gender=F|age=50+", "");
 	
-	SsemrBaseDataSet.ColumnParameters p50plus = new SsemrBaseDataSet.ColumnParameters(null, "50+", "age=50+", "");
+	eHospitalBaseDataSet.ColumnParameters p50plus = new eHospitalBaseDataSet.ColumnParameters(null, "50+", "age=50+", "");
 	
-	SsemrBaseDataSet.ColumnParameters colTotal = new SsemrBaseDataSet.ColumnParameters(null, "Total", null, "");
+	eHospitalBaseDataSet.ColumnParameters colTotal = new eHospitalBaseDataSet.ColumnParameters(null, "Total", null, "");
 	
 	List<ColumnParameters> allAgeDisaggregation = Arrays.asList(femaleInfants, maleInfants, female_1_to_4, male_1_to_4,
 	    female_5_to_9, male_5_to_9, female_10_to_14, male_10_to_14, female_15_to_19, male_15_to_19, female_20_to_24,
@@ -153,8 +153,8 @@ public class ArtDatasetDefinition extends SsemrBaseDataSet {
 	    subTotalFemales, subTotalMales, colTotal);
 	
 	@Autowired
-	public ArtDatasetDefinition(SsemrCommonDimension dimension, SsemrGeneralIndicator indicator,
-	    ArtCohortQueries artCohortQueries, CommonCohortQueries commonCohortQueries) {
+	public ArtDatasetDefinition(eHospitalCommonDimension dimension, SsemrGeneralIndicator indicator,
+								ArtCohortQueries artCohortQueries, CommonCohortQueries commonCohortQueries) {
 		this.dimension = dimension;
 		this.indicator = indicator;
 		this.artCohortQueries = artCohortQueries;

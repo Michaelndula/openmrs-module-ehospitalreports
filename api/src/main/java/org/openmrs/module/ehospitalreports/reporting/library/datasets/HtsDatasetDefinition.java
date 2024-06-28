@@ -1,20 +1,20 @@
 package org.openmrs.module.ehospitalreports.reporting.library.datasets;
 
-import static org.openmrs.module.ehospitalreports.reporting.utils.SsemrReportUtils.map;
+import static org.openmrs.module.ehospitalreports.reporting.utils.eHospitalReportUtils.map;
 
 import org.openmrs.module.reporting.dataset.definition.CohortIndicatorDataSetDefinition;
 import org.openmrs.module.reporting.dataset.definition.DataSetDefinition;
 import org.openmrs.module.ehospitalreports.reporting.library.cohorts.CommonCohortQueries;
 import org.openmrs.module.ehospitalreports.reporting.library.cohorts.HtsCohortQueries;
-import org.openmrs.module.ehospitalreports.reporting.library.dimension.SsemrCommonDimension;
+import org.openmrs.module.ehospitalreports.reporting.library.dimension.eHospitalCommonDimension;
 import org.openmrs.module.ehospitalreports.reporting.library.indicator.SsemrGeneralIndicator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class HtsDatasetDefinition extends SsemrBaseDataSet {
+public class HtsDatasetDefinition extends eHospitalBaseDataSet {
 	
-	private final SsemrCommonDimension dimension;
+	private final eHospitalCommonDimension dimension;
 	
 	private final SsemrGeneralIndicator indicator;
 	
@@ -23,8 +23,8 @@ public class HtsDatasetDefinition extends SsemrBaseDataSet {
 	private final HtsCohortQueries htsCohortQueries;
 	
 	@Autowired
-	public HtsDatasetDefinition(SsemrCommonDimension dimension, SsemrGeneralIndicator indicator,
-	    CommonCohortQueries commonCohortQueries, HtsCohortQueries htsCohortQueries) {
+	public HtsDatasetDefinition(eHospitalCommonDimension dimension, SsemrGeneralIndicator indicator,
+								CommonCohortQueries commonCohortQueries, HtsCohortQueries htsCohortQueries) {
 		this.dimension = dimension;
 		this.indicator = indicator;
 		this.commonCohortQueries = commonCohortQueries;

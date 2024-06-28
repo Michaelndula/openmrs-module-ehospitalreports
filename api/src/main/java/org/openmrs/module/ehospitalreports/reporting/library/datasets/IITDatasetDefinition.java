@@ -39,7 +39,7 @@ import org.openmrs.module.ehospitalreports.reporting.utils.constants.reports.sha
 import org.springframework.stereotype.Component;
 
 @Component
-public class IITDatasetDefinition extends SsemrBaseDataSet {
+public class IITDatasetDefinition extends eHospitalBaseDataSet {
 	
 	private DataDefinition personPayamAddress() {
 		CalculationDataDefinition cd = new CalculationDataDefinition("payam", new PayamAddressCalculation());

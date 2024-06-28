@@ -39,7 +39,7 @@ import org.openmrs.module.ehospitalreports.reporting.library.data.definition.Bre
 import org.openmrs.module.ehospitalreports.reporting.calculation.LandmarkAddressCalculation;
 
 @Component
-public class EligibleForTPTDatasetDefinition extends SsemrBaseDataSet {
+public class EligibleForTPTDatasetDefinition extends eHospitalBaseDataSet {
 	
 	private DataDefinition personPayamAddress() {
 		CalculationDataDefinition cd = new CalculationDataDefinition("payam", new PayamAddressCalculation());

@@ -1,9 +1,9 @@
 package org.openmrs.module.ehospitalreports.reporting.library.datasets;
 
-import static org.openmrs.module.ehospitalreports.reporting.utils.SsemrReportUtils.map;
+import static org.openmrs.module.ehospitalreports.reporting.utils.eHospitalReportUtils.map;
 
 import org.openmrs.module.ehospitalreports.reporting.library.cohorts.HivSelfTestingCohortQueries;
-import org.openmrs.module.ehospitalreports.reporting.library.dimension.SsemrCommonDimension;
+import org.openmrs.module.ehospitalreports.reporting.library.dimension.eHospitalCommonDimension;
 import org.openmrs.module.ehospitalreports.reporting.library.dimension.EmrDimensionReferences;
 import org.openmrs.module.ehospitalreports.reporting.library.indicator.SsemrGeneralIndicator;
 import org.openmrs.module.reporting.dataset.definition.CohortIndicatorDataSetDefinition;
@@ -12,17 +12,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class HivSelfTestingDatasetDefinition extends SsemrBaseDataSet {
+public class HivSelfTestingDatasetDefinition extends eHospitalBaseDataSet {
 	
-	private final SsemrCommonDimension dimension;
+	private final eHospitalCommonDimension dimension;
 	
 	private final SsemrGeneralIndicator indicator;
 	
 	private final HivSelfTestingCohortQueries hivSelfTestingCohortQueries;
 	
 	@Autowired
-	public HivSelfTestingDatasetDefinition(SsemrCommonDimension dimension, SsemrGeneralIndicator indicator,
-	    HivSelfTestingCohortQueries hivSelfTestingCohortQueries) {
+	public HivSelfTestingDatasetDefinition(eHospitalCommonDimension dimension, SsemrGeneralIndicator indicator,
+										   HivSelfTestingCohortQueries hivSelfTestingCohortQueries) {
 		this.dimension = dimension;
 		this.indicator = indicator;
 		this.hivSelfTestingCohortQueries = hivSelfTestingCohortQueries;

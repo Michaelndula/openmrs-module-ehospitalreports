@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 @Component
-public class ListOfClientsWithHvlWhoReceivedDSD extends SsemrBaseDataSet {
+public class ListOfClientsWithHvlWhoReceivedDSD extends eHospitalBaseDataSet {
 	
 	/**
 	 * Clients with HVL, who received EAC1 session

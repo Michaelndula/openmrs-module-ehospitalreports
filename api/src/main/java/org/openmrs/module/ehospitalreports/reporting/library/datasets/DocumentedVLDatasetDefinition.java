@@ -40,7 +40,7 @@ import org.openmrs.module.ehospitalreports.reporting.library.data.definition.VLR
 import org.openmrs.module.ehospitalreports.reporting.library.data.definition.DateVLSampleCollectedDataDefinition;
 
 @Component
-public class DocumentedVLDatasetDefinition extends SsemrBaseDataSet {
+public class DocumentedVLDatasetDefinition extends eHospitalBaseDataSet {
 	
 	private DataDefinition personPayamAddress() {
 		CalculationDataDefinition cd = new CalculationDataDefinition("payam", new PayamAddressCalculation());

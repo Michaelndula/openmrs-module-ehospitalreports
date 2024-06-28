@@ -12,7 +12,7 @@ package org.openmrs.module.ehospitalreports;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.module.BaseModuleActivator;
-import org.openmrs.module.ehospitalreports.reporting.SsemrReportInitializer;
+import org.openmrs.module.ehospitalreports.reporting.eHospitalReportInitializer;
 
 /**
  * This class contains the logic that is run every time this module is either started or shutdown
@@ -21,7 +21,7 @@ public class eHospitalReportsActivator extends BaseModuleActivator {
 	
 	private static Log log = LogFactory.getLog(eHospitalReportsActivator.class);
 	
-	private SsemrReportInitializer reportsInitializer = new SsemrReportInitializer();
+	private eHospitalReportInitializer reportsInitializer = new eHospitalReportInitializer();
 	
 	/**
 	 * @see #started()

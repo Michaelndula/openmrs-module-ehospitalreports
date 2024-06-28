@@ -6,7 +6,7 @@ import org.openmrs.module.reporting.report.ReportDesign;
 import org.openmrs.module.reporting.report.definition.ReportDefinition;
 import org.openmrs.module.ehospitalreports.manager.eHospitalDataExportManager;
 import org.openmrs.module.ehospitalreports.reporting.library.datasets.MerIndicatorsDatasetDefinition;
-import org.openmrs.module.ehospitalreports.reporting.utils.SsemrReportUtils;
+import org.openmrs.module.ehospitalreports.reporting.utils.eHospitalReportUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -57,10 +57,10 @@ public class SetupMerTxRttIndicatorsReport extends eHospitalDataExportManager {
 		rd.setDescription(getDescription());
 		rd.addParameter(new Parameter("startDate", "StartDate", Date.class));
 		rd.addParameter(new Parameter("endDate", "End Date", Date.class));
-		rd.addDataSetDefinition("TxR", SsemrReportUtils.map(merIndicatorsDatasetDefinition.getTxRttDataset(), mappings));
-		rd.addDataSetDefinition("TxR1", SsemrReportUtils.map(merIndicatorsDatasetDefinition.getTxRttDataset(), mappings1));
-		rd.addDataSetDefinition("TxR2", SsemrReportUtils.map(merIndicatorsDatasetDefinition.getTxRttDataset(), mappings2));
-		rd.addDataSetDefinition("TxR3", SsemrReportUtils.map(merIndicatorsDatasetDefinition.getTxRttDataset(), mappings3));
+		rd.addDataSetDefinition("TxR", eHospitalReportUtils.map(merIndicatorsDatasetDefinition.getTxRttDataset(), mappings));
+		rd.addDataSetDefinition("TxR1", eHospitalReportUtils.map(merIndicatorsDatasetDefinition.getTxRttDataset(), mappings1));
+		rd.addDataSetDefinition("TxR2", eHospitalReportUtils.map(merIndicatorsDatasetDefinition.getTxRttDataset(), mappings2));
+		rd.addDataSetDefinition("TxR3", eHospitalReportUtils.map(merIndicatorsDatasetDefinition.getTxRttDataset(), mappings3));
 		return rd;
 	}
 	

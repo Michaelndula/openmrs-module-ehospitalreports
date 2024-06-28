@@ -6,7 +6,7 @@ import org.openmrs.module.reporting.report.ReportDesign;
 import org.openmrs.module.reporting.report.definition.ReportDefinition;
 import org.openmrs.module.ehospitalreports.manager.eHospitalDataExportManager;
 import org.openmrs.module.ehospitalreports.reporting.library.datasets.MerIndicatorsDatasetDefinition;
-import org.openmrs.module.ehospitalreports.reporting.utils.SsemrReportUtils;
+import org.openmrs.module.ehospitalreports.reporting.utils.eHospitalReportUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -58,23 +58,23 @@ public class setupMerTxCurrTxNewIndicatorsReport extends eHospitalDataExportMana
 		rd.addParameter(new Parameter("startDate", "Start Date", Date.class));
 		rd.addParameter(new Parameter("endDate", "End Date", Date.class));
 		rd.addDataSetDefinition("TxC",
-		    SsemrReportUtils.map(merIndicatorsDatasetDefinition.getTxCurrDataset(), mappingsQuaterly));
+		    eHospitalReportUtils.map(merIndicatorsDatasetDefinition.getTxCurrDataset(), mappingsQuaterly));
 		rd.addDataSetDefinition("TxC1",
-		    SsemrReportUtils.map(merIndicatorsDatasetDefinition.getTxCurrDataset(), mappingsFirstMonth));
+		    eHospitalReportUtils.map(merIndicatorsDatasetDefinition.getTxCurrDataset(), mappingsFirstMonth));
 		rd.addDataSetDefinition("TxC2",
-		    SsemrReportUtils.map(merIndicatorsDatasetDefinition.getTxCurrDataset(), mappingsSecondMonth));
+		    eHospitalReportUtils.map(merIndicatorsDatasetDefinition.getTxCurrDataset(), mappingsSecondMonth));
 		rd.addDataSetDefinition("TxC3",
-		    SsemrReportUtils.map(merIndicatorsDatasetDefinition.getTxCurrDataset(), mappingsThirdMonth));
+		    eHospitalReportUtils.map(merIndicatorsDatasetDefinition.getTxCurrDataset(), mappingsThirdMonth));
 		
 		//Tx new totals for 1,2 and 3 month
 		rd.addDataSetDefinition("TxN",
-		    SsemrReportUtils.map(merIndicatorsDatasetDefinition.getTxNewDataset(), mappingsQuaterly));
+		    eHospitalReportUtils.map(merIndicatorsDatasetDefinition.getTxNewDataset(), mappingsQuaterly));
 		rd.addDataSetDefinition("TxN1",
-		    SsemrReportUtils.map(merIndicatorsDatasetDefinition.getTxNewDataset(), mappingsFirstMonth));
+		    eHospitalReportUtils.map(merIndicatorsDatasetDefinition.getTxNewDataset(), mappingsFirstMonth));
 		rd.addDataSetDefinition("TxN2",
-		    SsemrReportUtils.map(merIndicatorsDatasetDefinition.getTxNewDataset(), mappingsSecondMonth));
+		    eHospitalReportUtils.map(merIndicatorsDatasetDefinition.getTxNewDataset(), mappingsSecondMonth));
 		rd.addDataSetDefinition("TxN3",
-		    SsemrReportUtils.map(merIndicatorsDatasetDefinition.getTxNewDataset(), mappingsThirdMonth));
+		    eHospitalReportUtils.map(merIndicatorsDatasetDefinition.getTxNewDataset(), mappingsThirdMonth));
 		
 		return rd;
 	}

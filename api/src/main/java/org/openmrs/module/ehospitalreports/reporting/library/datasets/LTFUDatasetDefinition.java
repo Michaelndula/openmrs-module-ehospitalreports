@@ -19,7 +19,7 @@ import org.openmrs.module.reporting.evaluation.parameter.Parameter;
 import org.springframework.stereotype.Component;
 
 @Component
-public class LTFUDatasetDefinition extends SsemrBaseDataSet {
+public class LTFUDatasetDefinition extends eHospitalBaseDataSet {
 	
 	public DataSetDefinition constructLtfuAppointmentRegisterDefinition() {
 		

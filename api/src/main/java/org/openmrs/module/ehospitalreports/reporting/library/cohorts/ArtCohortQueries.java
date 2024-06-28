@@ -11,7 +11,7 @@ import org.openmrs.module.reporting.cohort.definition.CompositionCohortDefinitio
 import org.openmrs.module.reporting.cohort.definition.SqlCohortDefinition;
 import org.openmrs.module.reporting.evaluation.parameter.Parameter;
 import org.openmrs.module.ehospitalreports.reporting.library.queries.CommonQueries;
-import org.openmrs.module.ehospitalreports.reporting.utils.SsemrReportUtils;
+import org.openmrs.module.ehospitalreports.reporting.utils.eHospitalReportUtils;
 import org.openmrs.module.ehospitalreports.reporting.utils.constants.reports.art.ArtReportsConstants;
 import org.openmrs.module.ehospitalreports.reporting.utils.constants.reports.shared.SharedReportConstants;
 import org.springframework.stereotype.Component;
@@ -225,8 +225,8 @@ public class ArtCohortQueries {
 	public CohortDefinition getPatientsOnFirstLineRegimenCohortDefinition() {
 		SqlCohortDefinition cd = new SqlCohortDefinition();
 		
-		String regimensString = SsemrReportUtils.concatenateStringAndQuote(ArtReportsConstants.adultFirstLineRegimen)
-		        + SsemrReportUtils.concatenateStringAndQuote(ArtReportsConstants.childFirstLineRegimen);
+		String regimensString = eHospitalReportUtils.concatenateStringAndQuote(ArtReportsConstants.adultFirstLineRegimen)
+		        + eHospitalReportUtils.concatenateStringAndQuote(ArtReportsConstants.childFirstLineRegimen);
 		String qry = "SELECT client_id from ( " + " SELECT "
 		        + "   e.client_id , mid(max(CONCAT(f.encounter_datetime,f.art_regimen)),20) as art_regimen "
 		        + " FROM ssemr_etl.ssemr_flat_encounter_hiv_care_enrolment e  "
@@ -242,8 +242,8 @@ public class ArtCohortQueries {
 	
 	public CohortDefinition getPatientsOnSecondLineRegimenCohortDefinition() {
 		SqlCohortDefinition cd = new SqlCohortDefinition();
-		String regimensString = SsemrReportUtils.concatenateStringAndQuote(ArtReportsConstants.adultSecondLineRegimen)
-		        + SsemrReportUtils.concatenateStringAndQuote(ArtReportsConstants.childSecondLineRegimen);
+		String regimensString = eHospitalReportUtils.concatenateStringAndQuote(ArtReportsConstants.adultSecondLineRegimen)
+		        + eHospitalReportUtils.concatenateStringAndQuote(ArtReportsConstants.childSecondLineRegimen);
 		
 		String qry = "SELECT client_id from ( "
 		        + " SELECT e.client_id , mid(max(CONCAT(f.encounter_datetime,f.art_regimen)),20) as art_regimen "
@@ -563,8 +563,8 @@ public class ArtCohortQueries {
 		//cd.addParameter(new Parameter("location", "location", Location.class));
 		
 		cd.addSearch("currentOnArt",
-		    SsemrReportUtils.map(getAgeAtStartOfART(minAge, maxAge, sex), "startDate=${startDate},endDate=${endDate}"));
-		cd.addSearch("onFirstLineRegimen", SsemrReportUtils.map(getPatientsOnFirstLineRegimenCohortDefinition(),
+		    eHospitalReportUtils.map(getAgeAtStartOfART(minAge, maxAge, sex), "startDate=${startDate},endDate=${endDate}"));
+		cd.addSearch("onFirstLineRegimen", eHospitalReportUtils.map(getPatientsOnFirstLineRegimenCohortDefinition(),
 		    "startDate=${startDate},endDate=${endDate}"));
 		cd.setCompositionString("currentOnArt AND onFirstLineRegimen");
 		return cd;
@@ -583,8 +583,8 @@ public class ArtCohortQueries {
 		//cd.addParameter(new Parameter("location", "location", Location.class));
 		
 		cd.addSearch("currentOnArt",
-		    SsemrReportUtils.map(getAgeAtStartOfART(minAge, maxAge, sex), "startDate=${startDate},endDate=${endDate}"));
-		cd.addSearch("onSecondLineRegimen", SsemrReportUtils.map(getPatientsOnSecondLineRegimenCohortDefinition(),
+		    eHospitalReportUtils.map(getAgeAtStartOfART(minAge, maxAge, sex), "startDate=${startDate},endDate=${endDate}"));
+		cd.addSearch("onSecondLineRegimen", eHospitalReportUtils.map(getPatientsOnSecondLineRegimenCohortDefinition(),
 		    "startDate=${startDate},endDate=${endDate}"));
 		cd.setCompositionString("currentOnArt AND onSecondLineRegimen");
 		return cd;
@@ -603,9 +603,9 @@ public class ArtCohortQueries {
 		//cd.addParameter(new Parameter("location", "location", Location.class));
 		
 		cd.addSearch("newlyStartedOnArt",
-		    SsemrReportUtils.map(getNewOnARTCohortDefinition(), "startDate=${startDate},endDate=${endDate}"));
+		    eHospitalReportUtils.map(getNewOnARTCohortDefinition(), "startDate=${startDate},endDate=${endDate}"));
 		cd.addSearch("pregnant",
-		    SsemrReportUtils.map(getPregnantWomenCohortDefinition(), "startDate=${startDate},endDate=${endDate}"));
+		    eHospitalReportUtils.map(getPregnantWomenCohortDefinition(), "startDate=${startDate},endDate=${endDate}"));
 		cd.setCompositionString("newlyStartedOnArt AND pregnant");
 		return cd;
 	}
@@ -623,9 +623,9 @@ public class ArtCohortQueries {
 		//cd.addParameter(new Parameter("location", "location", Location.class));
 		
 		cd.addSearch("newlyStartedOnArt",
-		    SsemrReportUtils.map(getNewOnARTCohortDefinition(), "startDate=${startDate},endDate=${endDate}"));
+		    eHospitalReportUtils.map(getNewOnARTCohortDefinition(), "startDate=${startDate},endDate=${endDate}"));
 		cd.addSearch("breastfeeding",
-		    SsemrReportUtils.map(getBreastfeedingWomenCohortDefinition(), "startDate=${startDate},endDate=${endDate}"));
+		    eHospitalReportUtils.map(getBreastfeedingWomenCohortDefinition(), "startDate=${startDate},endDate=${endDate}"));
 		cd.setCompositionString("newlyStartedOnArt AND breastfeeding");
 		return cd;
 	}
@@ -638,9 +638,9 @@ public class ArtCohortQueries {
 		//cd.addParameter(new Parameter("location", "location", Location.class));
 		
 		cd.addSearch("newlyStartedOnArt",
-		    SsemrReportUtils.map(getNewOnARTCohortDefinition(), "startDate=${startDate},endDate=${endDate}"));
+		    eHospitalReportUtils.map(getNewOnARTCohortDefinition(), "startDate=${startDate},endDate=${endDate}"));
 		cd.addSearch("onTLDRegimen",
-		    SsemrReportUtils.map(getPatientsOnTLDCohortDefinition(), "startDate=${startDate},endDate=${endDate}"));
+		    eHospitalReportUtils.map(getPatientsOnTLDCohortDefinition(), "startDate=${startDate},endDate=${endDate}"));
 		cd.setCompositionString("newlyStartedOnArt AND onTLDRegimen");
 		return cd;
 	}
@@ -653,9 +653,9 @@ public class ArtCohortQueries {
 		//cd.addParameter(new Parameter("location", "location", Location.class));
 		
 		cd.addSearch("newlyStartedOnArt",
-		    SsemrReportUtils.map(getNewOnARTCohortDefinition(), "startDate=${startDate},endDate=${endDate}"));
+		    eHospitalReportUtils.map(getNewOnARTCohortDefinition(), "startDate=${startDate},endDate=${endDate}"));
 		cd.addSearch("onOtherDTGRegimen",
-		    SsemrReportUtils.map(getPatientsOnDTGRegimenCohortDefinition(), "startDate=${startDate},endDate=${endDate}"));
+		    eHospitalReportUtils.map(getPatientsOnDTGRegimenCohortDefinition(), "startDate=${startDate},endDate=${endDate}"));
 		cd.setCompositionString("newlyStartedOnArt AND onOtherDTGRegimen");
 		return cd;
 	}

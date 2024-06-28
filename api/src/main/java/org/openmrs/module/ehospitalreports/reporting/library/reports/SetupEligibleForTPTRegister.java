@@ -7,7 +7,7 @@ import org.openmrs.module.reporting.report.definition.ReportDefinition;
 import org.openmrs.module.ehospitalreports.manager.eHospitalDataExportManager;
 import org.openmrs.module.ehospitalreports.reporting.library.cohorts.TPTCohortQueries;
 import org.openmrs.module.ehospitalreports.reporting.library.datasets.EligibleForTPTDatasetDefinition;
-import org.openmrs.module.ehospitalreports.reporting.utils.SsemrReportUtils;
+import org.openmrs.module.ehospitalreports.reporting.utils.eHospitalReportUtils;
 import org.openmrs.module.ehospitalreports.reporting.utils.constants.reports.shared.SharedReportConstants;
 import org.openmrs.module.ehospitalreports.reporting.utils.constants.templates.shared.SharedTemplatesConstants;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +61,7 @@ public class SetupEligibleForTPTRegister extends eHospitalDataExportManager {
 		rd.addParameters(eligibleForTPTDatasetDefinition.getParameters());
 		rd.addDataSetDefinition("ETPT",
 		    Mapped.mapStraightThrough(eligibleForTPTDatasetDefinition.constructEligibleForTPTDatasetDefinition()));
-		rd.setBaseCohortDefinition(SsemrReportUtils.map(tptCohortQueries.getPatientsWhoAreEligibleForTPT(),
+		rd.setBaseCohortDefinition(eHospitalReportUtils.map(tptCohortQueries.getPatientsWhoAreEligibleForTPT(),
 		    "startDate=${startDate},endDate=${endDate+23h}"));
 		return rd;
 	}

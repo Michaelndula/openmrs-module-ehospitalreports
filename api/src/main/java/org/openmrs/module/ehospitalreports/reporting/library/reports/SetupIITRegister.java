@@ -7,7 +7,7 @@ import org.openmrs.module.reporting.report.definition.ReportDefinition;
 import org.openmrs.module.ehospitalreports.manager.eHospitalDataExportManager;
 import org.openmrs.module.ehospitalreports.reporting.library.cohorts.BaseCohortQueries;
 import org.openmrs.module.ehospitalreports.reporting.library.datasets.IITDatasetDefinition;
-import org.openmrs.module.ehospitalreports.reporting.utils.SsemrReportUtils;
+import org.openmrs.module.ehospitalreports.reporting.utils.eHospitalReportUtils;
 import org.openmrs.module.ehospitalreports.reporting.utils.constants.reports.shared.SharedReportConstants;
 import org.openmrs.module.ehospitalreports.reporting.utils.constants.templates.shared.SharedTemplatesConstants;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,7 +59,7 @@ public class SetupIITRegister extends eHospitalDataExportManager {
 		rd.setDescription(getDescription());
 		rd.addParameters(iitDatasetDefinition.getParameters());
 		rd.addDataSetDefinition("IIT", Mapped.mapStraightThrough(iitDatasetDefinition.constructIITDatasetDefinition()));
-		rd.setBaseCohortDefinition(SsemrReportUtils.map(baseCohortQueries.getPatientsWhoAreIIT(),
+		rd.setBaseCohortDefinition(eHospitalReportUtils.map(baseCohortQueries.getPatientsWhoAreIIT(),
 		    "startDate=${startDate},endDate=${endDate+23h}"));
 		return rd;
 	}

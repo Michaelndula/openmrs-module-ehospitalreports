@@ -7,7 +7,7 @@ import org.openmrs.module.reporting.report.definition.ReportDefinition;
 import org.openmrs.module.ehospitalreports.manager.eHospitalDataExportManager;
 import org.openmrs.module.ehospitalreports.reporting.library.cohorts.BaseCohortQueries;
 import org.openmrs.module.ehospitalreports.reporting.library.datasets.HighVLDatasetDefinition;
-import org.openmrs.module.ehospitalreports.reporting.utils.SsemrReportUtils;
+import org.openmrs.module.ehospitalreports.reporting.utils.eHospitalReportUtils;
 import org.openmrs.module.ehospitalreports.reporting.utils.constants.reports.shared.SharedReportConstants;
 import org.openmrs.module.ehospitalreports.reporting.utils.constants.templates.shared.SharedTemplatesConstants;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,7 +59,7 @@ public class SetupHighVLRegister extends eHospitalDataExportManager {
 		rd.setDescription(getDescription());
 		rd.addParameters(highVLDatasetDefinition.getParameters());
 		rd.addDataSetDefinition("HVL", Mapped.mapStraightThrough(highVLDatasetDefinition.constructHighVLDatasetDefinition()));
-		rd.setBaseCohortDefinition(SsemrReportUtils.map(baseCohortQueries.getPatientsWhoHaveHighVL(),
+		rd.setBaseCohortDefinition(eHospitalReportUtils.map(baseCohortQueries.getPatientsWhoHaveHighVL(),
 		    "startDate=${startDate},endDate=${endDate+23h}"));
 		return rd;
 	}

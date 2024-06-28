@@ -15,27 +15,27 @@
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.api.context.Context;
-import org.openmrs.module.ehospitalreports.manager.SsemrReportManager;
-import org.openmrs.module.ehospitalreports.reporting.utils.SsemrReportUtils;
+import org.openmrs.module.ehospitalreports.manager.eHospitalReportManager;
+import org.openmrs.module.ehospitalreports.reporting.utils.eHospitalReportUtils;
 import org.openmrs.module.reporting.ReportingConstants;
 import org.openmrs.module.reporting.report.manager.ReportManager;
 import org.openmrs.module.reporting.report.util.ReportUtil;
 
-public class SsemrReportInitializer {
+public class eHospitalReportInitializer {
 	
 	private Log log = LogFactory.getLog(this.getClass());
 	
 	/** Initializes all Ssemr reports and remove deprecated reports from database. */
 	public void initializeReports() {
 		
-		for (ReportManager reportManager : Context.getRegisteredComponents(SsemrReportManager.class)) {
+		for (ReportManager reportManager : Context.getRegisteredComponents(eHospitalReportManager.class)) {
 			if (reportManager.getClass().getAnnotation(Deprecated.class) != null) {
 				// remove deprecated reports
-				SsemrReportUtils.purgeReportDefinition(reportManager);
+				eHospitalReportUtils.purgeReportDefinition(reportManager);
 				log.info("Report " + reportManager.getName() + " is deprecated.  Removing it from database.");
 			} else {
 				// setup active reports
-				SsemrReportUtils.setupReportDefinition(reportManager);
+				eHospitalReportUtils.setupReportDefinition(reportManager);
 				log.info("Setting up report " + reportManager.getName() + "...");
 			}
 		}
@@ -44,9 +44,9 @@ public class SsemrReportInitializer {
 	
 	/** Purges all reports from database */
 	public void purgeReports() {
-		for (ReportManager reportManager : Context.getRegisteredComponents(SsemrReportManager.class)) {
+		for (ReportManager reportManager : Context.getRegisteredComponents(eHospitalReportManager.class)) {
 			if (reportManager != null) {
-				SsemrReportUtils.purgeReportDefinition(reportManager);
+				eHospitalReportUtils.purgeReportDefinition(reportManager);
 				log.info("Report " + reportManager.getName() + " removed from database.");
 			} else {
 				log.info("New reports set up");

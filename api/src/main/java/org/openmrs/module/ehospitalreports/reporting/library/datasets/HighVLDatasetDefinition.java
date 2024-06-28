@@ -49,7 +49,7 @@ import org.openmrs.module.ehospitalreports.reporting.library.data.converter.Pers
 import org.openmrs.PersonAttributeType;
 
 @Component
-public class HighVLDatasetDefinition extends SsemrBaseDataSet {
+public class HighVLDatasetDefinition extends eHospitalBaseDataSet {
 	
 	private DataDefinition personPayamAddress() {
 		CalculationDataDefinition cd = new CalculationDataDefinition("payam", new PayamAddressCalculation());

@@ -3,7 +3,7 @@ package org.openmrs.module.ehospitalreports.reporting.library.dimension;
 import java.util.Arrays;
 import java.util.List;
 
-import org.openmrs.module.ehospitalreports.reporting.library.datasets.SsemrBaseDataSet.ColumnParameters;
+import org.openmrs.module.ehospitalreports.reporting.library.datasets.eHospitalBaseDataSet.ColumnParameters;
 
 public class EmrDimensionReferences {
 	

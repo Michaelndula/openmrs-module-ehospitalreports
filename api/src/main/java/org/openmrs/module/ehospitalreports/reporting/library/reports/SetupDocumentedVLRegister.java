@@ -7,7 +7,7 @@ import org.openmrs.module.reporting.report.definition.ReportDefinition;
 import org.openmrs.module.ehospitalreports.manager.eHospitalDataExportManager;
 import org.openmrs.module.ehospitalreports.reporting.library.cohorts.BaseCohortQueries;
 import org.openmrs.module.ehospitalreports.reporting.library.datasets.DocumentedVLDatasetDefinition;
-import org.openmrs.module.ehospitalreports.reporting.utils.SsemrReportUtils;
+import org.openmrs.module.ehospitalreports.reporting.utils.eHospitalReportUtils;
 import org.openmrs.module.ehospitalreports.reporting.utils.constants.reports.shared.SharedReportConstants;
 import org.openmrs.module.ehospitalreports.reporting.utils.constants.templates.shared.SharedTemplatesConstants;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +61,7 @@ public class SetupDocumentedVLRegister extends eHospitalDataExportManager {
 		rd.addParameters(documentedVlDatasetDefinition.getParameters());
 		rd.addDataSetDefinition("DVLD",
 		    Mapped.mapStraightThrough(documentedVlDatasetDefinition.constructDocumentedVLDatasetDefinition()));
-		rd.setBaseCohortDefinition(SsemrReportUtils.map(baseCohortQueries.getPatientsWhoHaveDocumentedVL(),
+		rd.setBaseCohortDefinition(eHospitalReportUtils.map(baseCohortQueries.getPatientsWhoHaveDocumentedVL(),
 		    "startDate=${startDate},endDate=${endDate+23h}"));
 		return rd;
 	}

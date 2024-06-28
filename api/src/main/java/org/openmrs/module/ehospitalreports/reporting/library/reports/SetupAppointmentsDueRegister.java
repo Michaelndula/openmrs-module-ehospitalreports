@@ -7,7 +7,7 @@ import org.openmrs.module.reporting.report.definition.ReportDefinition;
 import org.openmrs.module.ehospitalreports.manager.eHospitalDataExportManager;
 import org.openmrs.module.ehospitalreports.reporting.library.cohorts.BaseCohortQueries;
 import org.openmrs.module.ehospitalreports.reporting.library.datasets.AppointmentsDueDatasetDefinition;
-import org.openmrs.module.ehospitalreports.reporting.utils.SsemrReportUtils;
+import org.openmrs.module.ehospitalreports.reporting.utils.eHospitalReportUtils;
 import org.openmrs.module.ehospitalreports.reporting.utils.constants.reports.shared.SharedReportConstants;
 import org.openmrs.module.ehospitalreports.reporting.utils.constants.templates.shared.SharedTemplatesConstants;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +61,7 @@ public class SetupAppointmentsDueRegister extends eHospitalDataExportManager {
 		rd.addParameters(appointmentsDueDatasetDefinition.getParameters());
 		rd.addDataSetDefinition("APPDUE",
 		    Mapped.mapStraightThrough(appointmentsDueDatasetDefinition.constructAppointmentsDueDatasetDefinition()));
-		rd.setBaseCohortDefinition(SsemrReportUtils.map(baseCohortQueries.getPatientsWithTodaysAppointments(),
+		rd.setBaseCohortDefinition(eHospitalReportUtils.map(baseCohortQueries.getPatientsWithTodaysAppointments(),
 		    "startDate=${startDate},endDate=${endDate+23h}"));
 		return rd;
 	}

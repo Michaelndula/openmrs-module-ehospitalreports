@@ -7,7 +7,7 @@ import org.openmrs.module.reporting.evaluation.parameter.Parameter;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DistrictDatasetDefinition extends SsemrBaseDataSet {
+public class DistrictDatasetDefinition extends eHospitalBaseDataSet {
 	
 	protected String getAddressQuery(int mflCodeId) {
 		

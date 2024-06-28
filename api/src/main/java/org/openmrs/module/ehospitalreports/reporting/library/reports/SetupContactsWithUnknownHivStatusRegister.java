@@ -7,7 +7,7 @@ import org.openmrs.module.reporting.report.definition.ReportDefinition;
 import org.openmrs.module.ehospitalreports.manager.eHospitalDataExportManager;
 import org.openmrs.module.ehospitalreports.reporting.library.cohorts.ContactsCohortQueries;
 import org.openmrs.module.ehospitalreports.reporting.library.datasets.SetupContactsWithUnknownHivStatusDatasetDefinition;
-import org.openmrs.module.ehospitalreports.reporting.utils.SsemrReportUtils;
+import org.openmrs.module.ehospitalreports.reporting.utils.eHospitalReportUtils;
 import org.openmrs.module.ehospitalreports.reporting.utils.constants.reports.shared.SharedReportConstants;
 import org.openmrs.module.ehospitalreports.reporting.utils.constants.templates.shared.SharedTemplatesConstants;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +62,7 @@ public class SetupContactsWithUnknownHivStatusRegister extends eHospitalDataExpo
 		rd.addParameters(setupContactsWithUnknownHivStatusDatasetDefinition.getParameters());
 		rd.addDataSetDefinition("CUHS", Mapped.mapStraightThrough(setupContactsWithUnknownHivStatusDatasetDefinition
 		        .constructContactsWithUnknownHivStatusDatasetDefinition()));
-		rd.setBaseCohortDefinition(SsemrReportUtils.map(contactsCohortQueries.getPatientsWhoHaveUnknownHivStatus(),
+		rd.setBaseCohortDefinition(eHospitalReportUtils.map(contactsCohortQueries.getPatientsWhoHaveUnknownHivStatus(),
 		    "startDate=${startDate},endDate=${endDate}"));
 		return rd;
 	}

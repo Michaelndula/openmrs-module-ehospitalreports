@@ -37,7 +37,7 @@ import org.openmrs.module.ehospitalreports.reporting.library.data.definition.Las
 import org.openmrs.module.ehospitalreports.reporting.converter.CalculationResultConverter;
 
 @Component
-public class SetupContactsWithUnknownHivStatusDatasetDefinition extends SsemrBaseDataSet {
+public class SetupContactsWithUnknownHivStatusDatasetDefinition extends eHospitalBaseDataSet {
 	
 	private DataDefinition personPayamAddress() {
 		CalculationDataDefinition cd = new CalculationDataDefinition("payam", new PayamAddressCalculation());

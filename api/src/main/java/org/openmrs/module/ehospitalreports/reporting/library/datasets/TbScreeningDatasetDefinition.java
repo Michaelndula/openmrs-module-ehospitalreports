@@ -17,23 +17,23 @@ import org.openmrs.module.reporting.dataset.definition.CohortIndicatorDataSetDef
 import org.openmrs.module.reporting.dataset.definition.DataSetDefinition;
 import org.openmrs.module.reporting.dataset.definition.PatientDataSetDefinition;
 import org.openmrs.module.ehospitalreports.reporting.library.cohorts.CommonCohortQueries;
-import org.openmrs.module.ehospitalreports.reporting.library.dimension.SsemrCommonDimension;
+import org.openmrs.module.ehospitalreports.reporting.library.dimension.eHospitalCommonDimension;
 import org.openmrs.module.ehospitalreports.reporting.library.indicator.SsemrGeneralIndicator;
-import org.openmrs.module.ehospitalreports.reporting.utils.SsemrReportUtils;
+import org.openmrs.module.ehospitalreports.reporting.utils.eHospitalReportUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class TbScreeningDatasetDefinition extends SsemrBaseDataSet {
+public class TbScreeningDatasetDefinition extends eHospitalBaseDataSet {
 	
 	private final CommonCohortQueries commonCohortQueries;
 	
-	private final SsemrCommonDimension dimension;
+	private final eHospitalCommonDimension dimension;
 	
 	private final SsemrGeneralIndicator indicator;
 	
 	@Autowired
-	public TbScreeningDatasetDefinition(CommonCohortQueries commonCohortQueries, SsemrCommonDimension dimension,
+	public TbScreeningDatasetDefinition(CommonCohortQueries commonCohortQueries, eHospitalCommonDimension dimension,
 	    SsemrGeneralIndicator indicator) {
 		this.commonCohortQueries = commonCohortQueries;
 		this.dimension = dimension;
@@ -74,8 +74,8 @@ public class TbScreeningDatasetDefinition extends SsemrBaseDataSet {
 		String mappings = "startDate=${startDate},endDate=${endDate},location=${location}";
 		dsd.setName("TBS");
 		dsd.addParameters(getParameters());
-		dsd.addDimension("gender", SsemrReportUtils.map(dimension.gender(), ""));
-		dsd.addDimension("age", SsemrReportUtils.map(dimension.age(), "effectiveDate=${endDate}"));
+		dsd.addDimension("gender", eHospitalReportUtils.map(dimension.gender(), ""));
+		dsd.addDimension("age", eHospitalReportUtils.map(dimension.age(), "effectiveDate=${endDate}"));
 		
 		//		addRow(
 		//		    dsd,

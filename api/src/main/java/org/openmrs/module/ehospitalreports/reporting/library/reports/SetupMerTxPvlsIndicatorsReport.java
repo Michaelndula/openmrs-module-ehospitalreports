@@ -6,7 +6,7 @@ import org.openmrs.module.reporting.report.ReportDesign;
 import org.openmrs.module.reporting.report.definition.ReportDefinition;
 import org.openmrs.module.ehospitalreports.manager.eHospitalDataExportManager;
 import org.openmrs.module.ehospitalreports.reporting.library.datasets.MerIndicatorsDatasetDefinition;
-import org.openmrs.module.ehospitalreports.reporting.utils.SsemrReportUtils;
+import org.openmrs.module.ehospitalreports.reporting.utils.eHospitalReportUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -57,11 +57,11 @@ public class SetupMerTxPvlsIndicatorsReport extends eHospitalDataExportManager {
 		rd.setName(getName());
 		rd.setDescription(getDescription());
 		rd.addParameter(new Parameter("endDate", "End Date", Date.class));
-		rd.addDataSetDefinition("TxP", SsemrReportUtils.map(merIndicatorsDatasetDefinition.getTxPvlsDataset(), mappings));
-		rd.addDataSetDefinition("TxPQ1", SsemrReportUtils.map(merIndicatorsDatasetDefinition.getTxPvlsDataset(), mappingsQ1));
-		rd.addDataSetDefinition("TxPQ2", SsemrReportUtils.map(merIndicatorsDatasetDefinition.getTxPvlsDataset(), mappingsQ2));
-		rd.addDataSetDefinition("TxPQ3", SsemrReportUtils.map(merIndicatorsDatasetDefinition.getTxPvlsDataset(), mappingsQ3));
-		rd.addDataSetDefinition("TxPQ4", SsemrReportUtils.map(merIndicatorsDatasetDefinition.getTxPvlsDataset(), mappingsQ4));
+		rd.addDataSetDefinition("TxP", eHospitalReportUtils.map(merIndicatorsDatasetDefinition.getTxPvlsDataset(), mappings));
+		rd.addDataSetDefinition("TxPQ1", eHospitalReportUtils.map(merIndicatorsDatasetDefinition.getTxPvlsDataset(), mappingsQ1));
+		rd.addDataSetDefinition("TxPQ2", eHospitalReportUtils.map(merIndicatorsDatasetDefinition.getTxPvlsDataset(), mappingsQ2));
+		rd.addDataSetDefinition("TxPQ3", eHospitalReportUtils.map(merIndicatorsDatasetDefinition.getTxPvlsDataset(), mappingsQ3));
+		rd.addDataSetDefinition("TxPQ4", eHospitalReportUtils.map(merIndicatorsDatasetDefinition.getTxPvlsDataset(), mappingsQ4));
 		return rd;
 	}
 	
