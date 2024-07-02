@@ -22,14 +22,14 @@ import javax.persistence.ManyToOne;
 /**
  * Please note that a corresponding table schema must be created in liquibase.xml.
  */
-//Uncomment 2 lines below if you want to make the Item class persistable, see also SsemrReportsDaoTest and liquibase.xml
-//@Entity(name = "ssemrreports.Item")
-//@Table(name = "ssemrreports_item")
+//Uncomment 2 lines below if you want to make the Item class persistable, see also eHospitalReportsDaoTest and liquibase.xml
+//@Entity(name = "ehospitalreports.Item")
+//@Table(name = "ehospitalreports_item")
 public class Item extends BaseOpenmrsData {
 	
 	@Id
 	@GeneratedValue
-	@Column(name = "ssemrreports_item_id")
+	@Column(name = "ehospitalreports_item_id")
 	private Integer id;
 	
 	@ManyToOne

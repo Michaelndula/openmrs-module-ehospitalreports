@@ -22,7 +22,7 @@ import org.openmrs.module.reporting.indicator.CohortIndicator;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SsemrGeneralIndicator extends BaseIndicator {
+public class eHospitalGeneralIndicator extends BaseIndicator {
 	
 	/**
 	 * Methods that takes a cohort definition and return and indicator definition for reuse

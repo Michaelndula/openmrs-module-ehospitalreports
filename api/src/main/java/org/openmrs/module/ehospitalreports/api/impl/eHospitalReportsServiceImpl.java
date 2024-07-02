@@ -22,11 +22,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
-@Component("ssemr.SsemrReportsService")
+@Component("ehospital.eHospitalReportsService")
 public class eHospitalReportsServiceImpl extends BaseOpenmrsService implements eHospitalReportsService {
 	
 	@Autowired
-	@Qualifier("ssemrreports.SsemrReportsDao")
+	@Qualifier("ehospitalreports.eHospitalReportsDao")
 	eHospitalReportsDao dao;
 	
 	UserService userService;

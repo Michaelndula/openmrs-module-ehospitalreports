@@ -18,7 +18,7 @@ import org.openmrs.module.reporting.report.renderer.ExcelTemplateRenderer;
 import org.openmrs.util.OpenmrsClassLoader;
 
 /** Excel Data Export Manager for Ssemr reports */
-public abstract class eHospitalDataExportManager extends SsemrReportManager {
+public abstract class eHospitalDataExportManager extends eHospitalReportManager {
 	
 	/** @return the uuid for the report design for exporting to Excel */
 	public abstract String getExcelDesignUuid();
@@ -45,8 +45,8 @@ public abstract class eHospitalDataExportManager extends SsemrReportManager {
 	        String reportDesignName, String excelDesignUuid, Map<? extends Object, ? extends Object> properties)
 	        throws IOException {
 		
-		eHospitalReportsService eHospitalReportsService = Context.getRegisteredComponent("ssemr.SsemrReportsService",
-		    eHospitalReportsService.class);
+		eHospitalReportsService eHospitalReportsService = Context.getRegisteredComponent(
+		    "ehospital.eHospitalReportsService", eHospitalReportsService.class);
 		if (StringUtils.isNotBlank(excelDesignUuid)) {
 			eHospitalReportsService.purgeReportDesignIfExists(excelDesignUuid);
 		}

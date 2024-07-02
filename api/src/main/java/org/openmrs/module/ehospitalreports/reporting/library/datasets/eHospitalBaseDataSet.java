@@ -22,7 +22,7 @@ import org.openmrs.module.reporting.evaluation.parameter.Mapped;
 import org.openmrs.module.reporting.evaluation.parameter.Parameter;
 import org.openmrs.module.reporting.indicator.CohortIndicator;
 
-public abstract class SsemrBaseDataSet {
+public abstract class eHospitalBaseDataSet {
 	
 	/**
 	 * Adds a row to a dataset based on an indicator and a list of column parameters
@@ -64,12 +64,12 @@ public abstract class SsemrBaseDataSet {
 	}
 	
 	public List<Parameter> getParameters() {
-    List<Parameter> parameters = new ArrayList<>();
-    parameters.add(ReportingConstants.START_DATE_PARAMETER);
-    parameters.add(ReportingConstants.END_DATE_PARAMETER);
-    // parameters.add(ReportingConstants.LOCATION_PARAMETER);
-    return parameters;
-  }
+        List<Parameter> parameters = new ArrayList<>();
+        parameters.add(ReportingConstants.START_DATE_PARAMETER);
+        parameters.add(ReportingConstants.END_DATE_PARAMETER);
+        // parameters.add(ReportingConstants.LOCATION_PARAMETER);
+        return parameters;
+    }
 	
 	public static class ColumnParameters {
 		

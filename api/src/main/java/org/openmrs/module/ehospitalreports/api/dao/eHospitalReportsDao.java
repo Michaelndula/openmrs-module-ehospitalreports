@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-@Repository("ssemrreports.SsemrReportsDao")
+@Repository("ehospitalreports.eHospitalReportsDao")
 public class eHospitalReportsDao {
 	
 	Logger log = LoggerFactory.getLogger(eHospitalReportsDao.class);

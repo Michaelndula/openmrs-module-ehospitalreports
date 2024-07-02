@@ -27,7 +27,7 @@ import org.openmrs.module.reporting.evaluation.parameter.Mapped;
 import org.openmrs.module.reporting.report.manager.BaseReportManager;
 
 /** Base implementation of ReportManager that provides some common method implementations */
-public abstract class SsemrReportManager extends BaseReportManager {
+public abstract class eHospitalReportManager extends BaseReportManager {
 	
 	protected void addColumn(PatientDataSetDefinition dsd, String columnName, PatientDataDefinition pdd) {
 		dsd.addColumn(columnName, pdd, Mapped.straightThroughMappings(pdd));

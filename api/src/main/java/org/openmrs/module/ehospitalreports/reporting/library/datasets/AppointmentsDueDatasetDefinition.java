@@ -38,7 +38,7 @@ import org.openmrs.module.ehospitalreports.reporting.converter.CalculationResult
 import org.openmrs.module.ehospitalreports.reporting.library.data.converter.PersonAttributeDataConverter;
 
 @Component
-public class AppointmentsDueDatasetDefinition extends SsemrBaseDataSet {
+public class AppointmentsDueDatasetDefinition extends eHospitalBaseDataSet {
 	
 	private DataDefinition personPayamAddress() {
 		CalculationDataDefinition cd = new CalculationDataDefinition("payam", new PayamAddressCalculation());
