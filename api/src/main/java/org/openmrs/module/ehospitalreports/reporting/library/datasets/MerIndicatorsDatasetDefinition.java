@@ -5,7 +5,7 @@ import org.openmrs.module.reporting.dataset.definition.DataSetDefinition;
 import org.openmrs.module.reporting.evaluation.parameter.Parameter;
 import org.openmrs.module.ehospitalreports.reporting.library.cohorts.MerCohortQueries;
 import org.openmrs.module.ehospitalreports.reporting.library.dimension.eHospitalCommonDimension;
-import org.openmrs.module.ehospitalreports.reporting.library.indicator.SsemrGeneralIndicator;
+import org.openmrs.module.ehospitalreports.reporting.library.indicator.eHospitalGeneralIndicator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,11 +22,11 @@ public class MerIndicatorsDatasetDefinition extends eHospitalBaseDataSet {
 	
 	private final MerCohortQueries merCohortQueries;
 	
-	private final SsemrGeneralIndicator indicator;
+	private final eHospitalGeneralIndicator indicator;
 	
 	@Autowired
 	public MerIndicatorsDatasetDefinition(eHospitalCommonDimension dimension, MerCohortQueries merCohortQueries,
-										  SsemrGeneralIndicator indicator) {
+										  eHospitalGeneralIndicator indicator) {
 		this.dimension = dimension;
 		this.merCohortQueries = merCohortQueries;
 		this.indicator = indicator;

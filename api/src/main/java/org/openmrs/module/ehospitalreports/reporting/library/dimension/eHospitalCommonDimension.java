@@ -19,8 +19,6 @@ import org.openmrs.Location;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.reporting.cohort.definition.CohortDefinition;
 import org.openmrs.module.ehospitalreports.reporting.library.cohorts.MerCohortQueries;
-import org.openmrs.module.ehospitalreports.reporting.library.cohorts.OpdReportCohortQueries;
-import org.openmrs.module.ehospitalreports.reporting.library.cohorts.SharedCohortQueries;
 import org.openmrs.module.ehospitalreports.reporting.utils.eHospitalReportUtils;
 import org.openmrs.module.reporting.evaluation.parameter.Parameter;
 import org.openmrs.module.reporting.indicator.dimension.CohortDefinitionDimension;

@@ -25,7 +25,7 @@ public class eHospitalReportInitializer {
 	
 	private Log log = LogFactory.getLog(this.getClass());
 	
-	/** Initializes all Ssemr reports and remove deprecated reports from database. */
+	/** Initializes all eHospital reports and remove deprecated reports from database. */
 	public void initializeReports() {
 		
 		for (ReportManager reportManager : Context.getRegisteredComponents(eHospitalReportManager.class)) {

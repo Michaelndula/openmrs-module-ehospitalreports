@@ -5,7 +5,6 @@ import org.openmrs.module.reporting.evaluation.parameter.Mapped;
 import org.openmrs.module.reporting.report.ReportDesign;
 import org.openmrs.module.reporting.report.definition.ReportDefinition;
 import org.openmrs.module.ehospitalreports.manager.eHospitalDataExportManager;
-import org.openmrs.module.ehospitalreports.reporting.library.cohorts.BaseCohortQueries;
 import org.openmrs.module.ehospitalreports.reporting.library.datasets.AppointmentsDueDatasetDefinition;
 import org.openmrs.module.ehospitalreports.reporting.utils.eHospitalReportUtils;
 import org.openmrs.module.ehospitalreports.reporting.utils.constants.reports.shared.SharedReportConstants;

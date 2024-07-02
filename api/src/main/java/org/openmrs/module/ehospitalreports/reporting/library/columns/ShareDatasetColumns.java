@@ -1,7 +1,5 @@
 package org.openmrs.module.ehospitalreports.reporting.library.columns;
 
-import org.openmrs.module.ehospitalreports.reporting.library.datasets.eHospitalBaseDataSet;
-
 import java.util.Arrays;
 import java.util.List;
 
