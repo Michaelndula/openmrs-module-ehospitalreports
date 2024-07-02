@@ -17,6 +17,8 @@ import java.util.Date;
 import org.openmrs.Concept;
 import org.openmrs.Location;
 import org.openmrs.api.context.Context;
+import org.openmrs.module.ehospitalreports.reporting.library.cohorts.SharedCohortQueries;
+import org.openmrs.module.ehospitalreports.reporting.library.cohorts.OpdReportCohortQueries;
 import org.openmrs.module.reporting.cohort.definition.CohortDefinition;
 import org.openmrs.module.ehospitalreports.reporting.library.cohorts.MerCohortQueries;
 import org.openmrs.module.ehospitalreports.reporting.utils.eHospitalReportUtils;
@@ -37,7 +39,7 @@ public class eHospitalCommonDimension {
 	
 	@Autowired
 	public eHospitalCommonDimension(SharedCohortQueries sharedCohortQueries, OpdReportCohortQueries opdReportCohortQueries,
-									MerCohortQueries merCohortQueries) {
+	    MerCohortQueries merCohortQueries) {
 		this.sharedCohortQueries = sharedCohortQueries;
 		this.opdReportCohortQueries = opdReportCohortQueries;
 		this.merCohortQueries = merCohortQueries;

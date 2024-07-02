@@ -26,7 +26,7 @@ public class MerIndicatorsDatasetDefinition extends eHospitalBaseDataSet {
 	
 	@Autowired
 	public MerIndicatorsDatasetDefinition(eHospitalCommonDimension dimension, MerCohortQueries merCohortQueries,
-										  eHospitalGeneralIndicator indicator) {
+	    eHospitalGeneralIndicator indicator) {
 		this.dimension = dimension;
 		this.merCohortQueries = merCohortQueries;
 		this.indicator = indicator;

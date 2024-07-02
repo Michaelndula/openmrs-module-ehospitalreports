@@ -3,9 +3,9 @@
 # Verify command line arguments or set defaults
 if [ "$#" -lt 4 ]; then
     echo "Usage: $0 <host> <db_name> <username> <password>"
-    echo "Using default values: host=localhost, db_name=ssemr_etl, username=root, password=root"
+    echo "Using default values: host=localhost, db_name=ehospital_etl, username=root, password=root"
     host="localhost"
-    db_name="ssemr_etl"
+    db_name="ehospital_etl"
     username="root"
     password="root"
 else

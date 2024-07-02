@@ -45,8 +45,8 @@ public abstract class eHospitalDataExportManager extends eHospitalReportManager 
 	        String reportDesignName, String excelDesignUuid, Map<? extends Object, ? extends Object> properties)
 	        throws IOException {
 		
-		eHospitalReportsService eHospitalReportsService = Context.getRegisteredComponent("ssemr.SsemrReportsService",
-		    eHospitalReportsService.class);
+		eHospitalReportsService eHospitalReportsService = Context.getRegisteredComponent(
+		    "ehospital.eHospitalReportsService", eHospitalReportsService.class);
 		if (StringUtils.isNotBlank(excelDesignUuid)) {
 			eHospitalReportsService.purgeReportDesignIfExists(excelDesignUuid);
 		}
