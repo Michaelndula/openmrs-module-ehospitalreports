@@ -2,7 +2,7 @@ package org.openmrs.module.ehospitalreports.reporting.utils.constants.reports.sh
 
 public class SharedReportConstants {
 	
-	public static final String DEFAULTER_LIST_UUID = "26985654-8c25-11ed-8e58-b7227b8d5928";
+	public static final String MOH_204_REGISTER_REPORT_UUID = "26985654-8c25-11ed-8e58-b7227b8d5928";
 	
 	public static final String LTFU_LIST_UUID = "a563b26a-8d03-11ed-b18e-277f66658de4";
 	

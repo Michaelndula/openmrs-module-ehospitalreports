@@ -24,4 +24,8 @@ public class BaseCohortQueries {
 		return cd;
 	}
 	
+	public CohortDefinition getChildOpdPatients() {
+		SqlCohortDefinition cd = new SqlCohortDefinition();
+		return cd;
+	}
 }
