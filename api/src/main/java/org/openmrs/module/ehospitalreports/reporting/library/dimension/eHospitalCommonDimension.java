@@ -155,7 +155,12 @@ public class eHospitalCommonDimension {
 		dim.addParameter(new Parameter("startDate", "Start Date", Date.class));
 		dim.addParameter(new Parameter("endDate", "End Date", Date.class));
 		dim.addParameter(new Parameter("location", "Location", Location.class));
-		
+		dim.addCohortDefinition("N", EhospitalReportUtils.map(
+		    opdReportCohortQueries.getNewReattendanceCases(SharedReportConstants.NEW_ATTENDANCES),
+		    "startDate=${startDate},endDate=${endDate},location=${location}"));
+		dim.addCohortDefinition("R", EhospitalReportUtils.map(
+		    opdReportCohortQueries.getNewReattendanceCases(SharedReportConstants.REPEAT_ATTENDANCES),
+		    "startDate=${startDate},endDate=${endDate},location=${location}"));
 		return dim;
 	}
 	
@@ -164,6 +169,28 @@ public class eHospitalCommonDimension {
 		dim.setName("HIV status for the patient dim");
 		dim.addParameter(new Parameter("endDate", "End Date", Date.class));
 		dim.addParameter(new Parameter("location", "Location", Location.class));
+		Concept hivStatus = Context.getConceptService().getConceptByUuid(SharedReportConstants.HIV_STATUS);
+		Concept hivPositive = Context.getConceptService().getConceptByUuid(
+		    SharedReportConstants.HIV_STATUS_POSITIVE_CONCEPT_UUID);
+		Concept hivNegative = Context.getConceptService().getConceptByUuid(
+		    SharedReportConstants.HIV_STATUS_NEGATIVE_CONCEPT_UUID);
+		Concept hivUnknown = Context.getConceptService().getConceptByUuid(
+		    SharedReportConstants.HIV_STATUS_UNKNOWN_CONCEPT_UUID);
+		dim.addCohortDefinition(
+		    "P",
+		    EhospitalReportUtils.map(
+		        sharedCohortQueries.getPatientsWithObsByEndDate(Arrays.asList(hivStatus.getConceptId()),
+		            Arrays.asList(hivPositive.getConceptId())), "endDate=${endDate},location=${location}"));
+		dim.addCohortDefinition(
+		    "N",
+		    EhospitalReportUtils.map(
+		        sharedCohortQueries.getPatientsWithObsByEndDate(Arrays.asList(hivStatus.getConceptId()),
+		            Arrays.asList(hivNegative.getConceptId())), "endDate=${endDate},location=${location}"));
+		dim.addCohortDefinition(
+		    "U",
+		    EhospitalReportUtils.map(
+		        sharedCohortQueries.getPatientsWithObsByEndDate(Arrays.asList(hivStatus.getConceptId()),
+		            Arrays.asList(hivUnknown.getConceptId())), "endDate=${endDate},location=${location}"));
 		
 		return dim;
 	}
@@ -193,7 +220,19 @@ public class eHospitalCommonDimension {
 		dim.addParameter(new Parameter("endDate", "End Date", Date.class));
 		dim.addParameter(new Parameter("startDate", "Start Date", Date.class));
 		dim.addParameter(new Parameter("location", "Location", Location.class));
-		
+		Concept hivStatus = Context.getConceptService().getConceptByUuid(SharedReportConstants.HIV_STATUS);
+		Concept hivPositive = Context.getConceptService().getConceptByUuid(
+		    SharedReportConstants.HIV_STATUS_POSITIVE_CONCEPT_UUID);
+		dim.addCohortDefinition(
+		    "PLWD",
+		    EhospitalReportUtils.map(
+		        sharedCohortQueries.getPatientsWithObsByEndDate(Arrays.asList(hivStatus.getConceptId()),
+		            Arrays.asList(hivPositive.getConceptId())), "endDate=${endDate},location=${location}"));
+		dim.addCohortDefinition(
+		    "PRG",
+		    EhospitalReportUtils.map(
+		        sharedCohortQueries.getPatientsWithObsByEndDate(Arrays.asList(hivStatus.getConceptId()),
+		            Arrays.asList(hivPositive.getConceptId())), "endDate=${endDate},location=${location}"));
 		return dim;
 	}
 	
