@@ -75,8 +75,8 @@ public class SetupMOH204AReportRegister extends eHospitalDataExportManager {
 	public List<ReportDesign> constructReportDesigns(ReportDefinition reportDefinition) {
 		ReportDesign reportDesign = null;
 		try {
-			reportDesign = createXlsReportDesign(reportDefinition, "moh204A.xls", "Report for listing High VL clients",
-			    getExcelDesignUuid(), null);
+			reportDesign = createXlsReportDesign(reportDefinition, "moh204A.xlsx",
+			    "MOH 204A: Out Patient Report for Children", getExcelDesignUuid(), null);
 			
 			Properties props = new Properties();
 			props.put("repeatingSections", "sheet:3,row:9,dataset:MOH204A");
