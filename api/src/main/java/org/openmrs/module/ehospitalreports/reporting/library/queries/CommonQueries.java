@@ -176,7 +176,7 @@ public class CommonQueries {
 	}
 	
 	public static String getChildOpdVisits() {
-		String query = "SELECT v.patient_id, vt.name AS visit_type " + "FROM visit v "
+		String query = "SELECT v.patient_id " + "FROM visit v "
 		        + "JOIN visit_type vt ON v.visit_type_id = vt.visit_type_id "
 		        + "JOIN person p ON v.patient_id = p.person_id " + "WHERE v.date_created BETWEEN :startDate AND :endDate "
 		        + "AND TIMESTAMPDIFF(YEAR, p.birthdate, CURDATE()) < 5 "
