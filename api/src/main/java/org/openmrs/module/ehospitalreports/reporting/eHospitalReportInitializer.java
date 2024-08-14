@@ -16,7 +16,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.ehospitalreports.manager.eHospitalReportManager;
-import org.openmrs.module.ehospitalreports.reporting.utils.eHospitalReportUtils;
+import org.openmrs.module.ehospitalreports.reporting.utils.EhospitalReportUtils;
 import org.openmrs.module.reporting.ReportingConstants;
 import org.openmrs.module.reporting.report.manager.ReportManager;
 import org.openmrs.module.reporting.report.util.ReportUtil;
@@ -31,11 +31,11 @@ public class eHospitalReportInitializer {
 		for (ReportManager reportManager : Context.getRegisteredComponents(eHospitalReportManager.class)) {
 			if (reportManager.getClass().getAnnotation(Deprecated.class) != null) {
 				// remove deprecated reports
-				eHospitalReportUtils.purgeReportDefinition(reportManager);
+				EhospitalReportUtils.purgeReportDefinition(reportManager);
 				log.info("Report " + reportManager.getName() + " is deprecated.  Removing it from database.");
 			} else {
 				// setup active reports
-				eHospitalReportUtils.setupReportDefinition(reportManager);
+				EhospitalReportUtils.setupReportDefinition(reportManager);
 				log.info("Setting up report " + reportManager.getName() + "...");
 			}
 		}
@@ -46,7 +46,7 @@ public class eHospitalReportInitializer {
 	public void purgeReports() {
 		for (ReportManager reportManager : Context.getRegisteredComponents(eHospitalReportManager.class)) {
 			if (reportManager != null) {
-				eHospitalReportUtils.purgeReportDefinition(reportManager);
+				EhospitalReportUtils.purgeReportDefinition(reportManager);
 				log.info("Report " + reportManager.getName() + " removed from database.");
 			} else {
 				log.info("New reports set up");

@@ -13,7 +13,7 @@ import java.util.Date;
 
 import static org.openmrs.module.ehospitalreports.reporting.library.columns.ShareDatasetColumns.getDispensationColumnsGenderAndAge;
 import static org.openmrs.module.ehospitalreports.reporting.library.columns.ShareDatasetColumns.getMerGenderAndAgeColumns;
-import static org.openmrs.module.ehospitalreports.reporting.utils.eHospitalReportUtils.map;
+import static org.openmrs.module.ehospitalreports.reporting.utils.EhospitalReportUtils.map;
 
 @Component
 public class MerIndicatorsDatasetDefinition extends eHospitalBaseDataSet {

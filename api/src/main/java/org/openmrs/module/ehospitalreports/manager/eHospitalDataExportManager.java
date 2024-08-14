@@ -17,7 +17,7 @@ import org.openmrs.module.reporting.report.manager.ReportManagerUtil;
 import org.openmrs.module.reporting.report.renderer.ExcelTemplateRenderer;
 import org.openmrs.util.OpenmrsClassLoader;
 
-/** Excel Data Export Manager for Ssemr reports */
+/** Excel Data Export Manager for eHospital reports */
 public abstract class eHospitalDataExportManager extends eHospitalReportManager {
 	
 	/** @return the uuid for the report design for exporting to Excel */

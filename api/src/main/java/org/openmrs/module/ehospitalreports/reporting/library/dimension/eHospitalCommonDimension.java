@@ -21,7 +21,7 @@ import org.openmrs.module.ehospitalreports.reporting.library.cohorts.SharedCohor
 import org.openmrs.module.ehospitalreports.reporting.library.cohorts.OpdReportCohortQueries;
 import org.openmrs.module.reporting.cohort.definition.CohortDefinition;
 import org.openmrs.module.ehospitalreports.reporting.library.cohorts.MerCohortQueries;
-import org.openmrs.module.ehospitalreports.reporting.utils.eHospitalReportUtils;
+import org.openmrs.module.ehospitalreports.reporting.utils.EhospitalReportUtils;
 import org.openmrs.module.reporting.evaluation.parameter.Parameter;
 import org.openmrs.module.reporting.indicator.dimension.CohortDefinitionDimension;
 import org.openmrs.module.ehospitalreports.reporting.utils.constants.reports.shared.SharedReportConstants;
@@ -53,8 +53,8 @@ public class eHospitalCommonDimension {
 	public CohortDefinitionDimension gender() {
 		CohortDefinitionDimension dim = new CohortDefinitionDimension();
 		dim.setName("gender");
-		dim.addCohortDefinition("M", eHospitalReportUtils.map(sharedCohortQueries.getClientGender("M"), ""));
-		dim.addCohortDefinition("F", eHospitalReportUtils.map(sharedCohortQueries.getClientGender("F"), ""));
+		dim.addCohortDefinition("M", EhospitalReportUtils.map(sharedCohortQueries.getClientGender("M"), ""));
+		dim.addCohortDefinition("F", EhospitalReportUtils.map(sharedCohortQueries.getClientGender("F"), ""));
 		return dim;
 	}
 	
@@ -68,84 +68,84 @@ public class eHospitalCommonDimension {
 		dim.setName("age");
 		dim.addParameter(new Parameter("effectiveDate", "Effective Date", Date.class));
 		dim.addCohortDefinition("<1",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(0, 0), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(0, 0), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("1-4",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(1, 4), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(1, 4), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("5-9",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(5, 9), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(5, 9), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("10-14",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(10, 14), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(10, 14), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("15-19",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(15, 19), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(15, 19), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("20-24",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(20, 24), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(20, 24), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("25-29",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(25, 29), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(25, 29), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("30-34",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(30, 34), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(30, 34), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("35-39",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(35, 39), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(35, 39), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("40-44",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(40, 44), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(40, 44), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("45-49",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(45, 49), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(45, 49), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("50+",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(50, 200), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(50, 200), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("5+",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(5, 200), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(5, 200), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("0-5",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(0, 5), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(0, 5), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("6-14",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(6, 14), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(6, 14), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("15-29",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(15, 29), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(15, 29), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("30+",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(30, 200), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(30, 200), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("<15",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(0, 14), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(0, 14), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("30-39",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(30, 39), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(30, 39), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("45+",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(45, 200), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(45, 200), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("0-14",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(0, 14), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(0, 14), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("1-9",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(1, 9), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(1, 9), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("40-49",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(40, 49), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(40, 49), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("10-12",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(10, 12), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(10, 12), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("13-14",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(13, 14), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(13, 14), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("50-54",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(50, 54), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(50, 54), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("55-59",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(55, 59), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(55, 59), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("60-64",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(60, 64), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(60, 64), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("65-69",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(65, 69), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(65, 69), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("70-74",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(70, 74), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(70, 74), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("75-79",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(75, 79), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(75, 79), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("80-84",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(80, 84), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(80, 84), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("85+",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(85, 200), "effectiveDate=${effectiveDate}"));
-		dim.addCohortDefinition("UK", eHospitalReportUtils.map(sharedCohortQueries.createUnknownAgeCohort(), ""));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(85, 200), "effectiveDate=${effectiveDate}"));
+		dim.addCohortDefinition("UK", EhospitalReportUtils.map(sharedCohortQueries.createUnknownAgeCohort(), ""));
 		dim.addCohortDefinition("60+",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(60, 200), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(60, 200), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("65+",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(65, 200), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(65, 200), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("15+",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(15, 200), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(15, 200), "effectiveDate=${effectiveDate}"));
 		
 		// regimen age-groups dimensions
 		dim.addCohortDefinition("0-9",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(0, 9), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(0, 9), "effectiveDate=${effectiveDate}"));
 		dim.addCohortDefinition("15-49",
-		    eHospitalReportUtils.map(sharedCohortQueries.getClientAge(15, 49), "effectiveDate=${effectiveDate}"));
+		    EhospitalReportUtils.map(sharedCohortQueries.getClientAge(15, 49), "effectiveDate=${effectiveDate}"));
 		return dim;
 	}
 	
@@ -155,12 +155,7 @@ public class eHospitalCommonDimension {
 		dim.addParameter(new Parameter("startDate", "Start Date", Date.class));
 		dim.addParameter(new Parameter("endDate", "End Date", Date.class));
 		dim.addParameter(new Parameter("location", "Location", Location.class));
-		dim.addCohortDefinition("N", eHospitalReportUtils.map(
-		    opdReportCohortQueries.getNewReattendanceCases(SharedReportConstants.NEW_ATTENDANCES),
-		    "startDate=${startDate},endDate=${endDate},location=${location}"));
-		dim.addCohortDefinition("R", eHospitalReportUtils.map(
-		    opdReportCohortQueries.getNewReattendanceCases(SharedReportConstants.REPEAT_ATTENDANCES),
-		    "startDate=${startDate},endDate=${endDate},location=${location}"));
+		
 		return dim;
 	}
 	
@@ -169,28 +164,6 @@ public class eHospitalCommonDimension {
 		dim.setName("HIV status for the patient dim");
 		dim.addParameter(new Parameter("endDate", "End Date", Date.class));
 		dim.addParameter(new Parameter("location", "Location", Location.class));
-		Concept hivStatus = Context.getConceptService().getConceptByUuid(SharedReportConstants.HIV_STATUS);
-		Concept hivPositive = Context.getConceptService().getConceptByUuid(
-		    SharedReportConstants.HIV_STATUS_POSITIVE_CONCEPT_UUID);
-		Concept hivNegative = Context.getConceptService().getConceptByUuid(
-		    SharedReportConstants.HIV_STATUS_NEGATIVE_CONCEPT_UUID);
-		Concept hivUnknown = Context.getConceptService().getConceptByUuid(
-		    SharedReportConstants.HIV_STATUS_UNKNOWN_CONCEPT_UUID);
-		dim.addCohortDefinition(
-		    "P",
-		    eHospitalReportUtils.map(
-		        sharedCohortQueries.getPatientsWithObsByEndDate(Arrays.asList(hivStatus.getConceptId()),
-		            Arrays.asList(hivPositive.getConceptId())), "endDate=${endDate},location=${location}"));
-		dim.addCohortDefinition(
-		    "N",
-		    eHospitalReportUtils.map(
-		        sharedCohortQueries.getPatientsWithObsByEndDate(Arrays.asList(hivStatus.getConceptId()),
-		            Arrays.asList(hivNegative.getConceptId())), "endDate=${endDate},location=${location}"));
-		dim.addCohortDefinition(
-		    "U",
-		    eHospitalReportUtils.map(
-		        sharedCohortQueries.getPatientsWithObsByEndDate(Arrays.asList(hivStatus.getConceptId()),
-		            Arrays.asList(hivUnknown.getConceptId())), "endDate=${endDate},location=${location}"));
 		
 		return dim;
 	}
@@ -209,8 +182,8 @@ public class eHospitalCommonDimension {
 	public CohortDefinitionDimension getCitizenType() {
 		CohortDefinitionDimension dim = new CohortDefinitionDimension();
 		dim.setName("Get citizen type dim");
-		dim.addCohortDefinition("C", eHospitalReportUtils.map(sharedCohortQueries.getCitizenType("Citizen"), ""));
-		dim.addCohortDefinition("CN", eHospitalReportUtils.map(sharedCohortQueries.getCitizenType("Non-citizen"), ""));
+		dim.addCohortDefinition("C", EhospitalReportUtils.map(sharedCohortQueries.getCitizenType("Citizen"), ""));
+		dim.addCohortDefinition("CN", EhospitalReportUtils.map(sharedCohortQueries.getCitizenType("Non-citizen"), ""));
 		return dim;
 	}
 	
@@ -220,19 +193,7 @@ public class eHospitalCommonDimension {
 		dim.addParameter(new Parameter("endDate", "End Date", Date.class));
 		dim.addParameter(new Parameter("startDate", "Start Date", Date.class));
 		dim.addParameter(new Parameter("location", "Location", Location.class));
-		Concept hivStatus = Context.getConceptService().getConceptByUuid(SharedReportConstants.HIV_STATUS);
-		Concept hivPositive = Context.getConceptService().getConceptByUuid(
-		    SharedReportConstants.HIV_STATUS_POSITIVE_CONCEPT_UUID);
-		dim.addCohortDefinition(
-		    "PLWD",
-		    eHospitalReportUtils.map(
-		        sharedCohortQueries.getPatientsWithObsByEndDate(Arrays.asList(hivStatus.getConceptId()),
-		            Arrays.asList(hivPositive.getConceptId())), "endDate=${endDate},location=${location}"));
-		dim.addCohortDefinition(
-		    "PRG",
-		    eHospitalReportUtils.map(
-		        sharedCohortQueries.getPatientsWithObsByEndDate(Arrays.asList(hivStatus.getConceptId()),
-		            Arrays.asList(hivPositive.getConceptId())), "endDate=${endDate},location=${location}"));
+		
 		return dim;
 	}
 	
@@ -244,9 +205,9 @@ public class eHospitalCommonDimension {
 		CohortDefinition less3m = merCohortQueries.getTxMlIitL3mCohorts();
 		CohortDefinition threeTo5m = merCohortQueries.getTxMlIit3To5mCohorts();
 		CohortDefinition more6m = merCohortQueries.getTxMlIitM6mCohorts();
-		dim.addCohortDefinition("<3m", eHospitalReportUtils.map(less3m, "startDate=${startDate},endDate=${endDate}"));
-		dim.addCohortDefinition("3-5m", eHospitalReportUtils.map(threeTo5m, "startDate=${startDate},endDate=${endDate}"));
-		dim.addCohortDefinition(">6m", eHospitalReportUtils.map(more6m, "startDate=${startDate},endDate=${endDate}"));
+		dim.addCohortDefinition("<3m", EhospitalReportUtils.map(less3m, "startDate=${startDate},endDate=${endDate}"));
+		dim.addCohortDefinition("3-5m", EhospitalReportUtils.map(threeTo5m, "startDate=${startDate},endDate=${endDate}"));
+		dim.addCohortDefinition(">6m", EhospitalReportUtils.map(more6m, "startDate=${startDate},endDate=${endDate}"));
 		return dim;
 	}
 }

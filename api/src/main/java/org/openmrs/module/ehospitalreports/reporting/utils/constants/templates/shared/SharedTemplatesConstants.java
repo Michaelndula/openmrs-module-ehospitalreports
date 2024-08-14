@@ -2,7 +2,7 @@ package org.openmrs.module.ehospitalreports.reporting.utils.constants.templates.
 
 public class SharedTemplatesConstants {
 	
-	public static final String DEFAULTER_LIST_TEMPLATE = "e3073644-8c24-11ed-80f5-c3bd1caace51";
+	public static final String MOH_204_REGISTER_TEMPLATE = "e3073644-8c24-11ed-80f5-c3bd1caace51";
 	
 	public static final String LTFU_LIST_TEMPLATE = "e31b3d9e-8d03-11ed-8266-1348e8c45c93";
 	
