@@ -174,12 +174,35 @@ public class CommonQueries {
 		
 		return query;
 	}
-
+	
 	public static String getChildOpdVisits() {
-		String query = "select t.patient_id from (select patient_id, appointment_service_id from openmrs.patient_appointment fp "
-				+ " where fp.status = 'Scheduled' or fp.status = 'Missed' and fp.start_date_time BETWEEN :startDate AND :endDate"
-				+ " group by patient_id, appointment_service_id) t";
-
+		String query = "SELECT v.patient_id, vt.name AS visit_type " + "FROM visit v "
+		        + "JOIN visit_type vt ON v.visit_type_id = vt.visit_type_id "
+		        + "JOIN person p ON v.patient_id = p.person_id " + "WHERE v.date_created BETWEEN :startDate AND :endDate "
+		        + "AND TIMESTAMPDIFF(YEAR, p.birthdate, CURDATE()) < 5 "
+		        + "AND (vt.name = 'OPD Visit' OR vt.name = 'OPD Revisit')";
+		
+		return query;
+	}
+	
+	public static String getClientsWithinAgeLimit(Integer minAge, Integer maxAge) {
+		String query = "SELECT mdp.person_id FROM ssemr_etl.mamba_dim_person mdp WHERE mdp.voided=0 "
+		        + " AND TIMESTAMPDIFF(YEAR, mdp.birthdate, :effectiveDate) BETWEEN %d AND %d";
+		
+		return String.format(query, minAge, maxAge);
+	}
+	
+	public static String getClientGender(String option) {
+		String query = "SELECT mdp.person_id FROM ssemr_etl.mamba_dim_person mdp WHERE mdp.voided=0 " + " AND mdp.gender='"
+		        + option + "'";
+		
+		return query;
+	}
+	
+	public static String getDeadClients() {
+		String query = "SELECT mdp.person_id FROM ssemr_etl.mamba_dim_person mdp WHERE"
+		        + " mdp.dead= 1 AND mdp.death_date IS NOT NULL AND mdp.death_date BETWEEN :startDate AND :endDate";
+		
 		return query;
 	}
 }

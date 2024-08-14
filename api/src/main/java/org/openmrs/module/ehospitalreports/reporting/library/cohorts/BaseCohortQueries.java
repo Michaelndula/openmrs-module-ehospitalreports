@@ -29,7 +29,7 @@ public class BaseCohortQueries {
 		cd.setName("Outpatient Report for Children");
 		cd.addParameter(new Parameter("startDate", "startDate", Date.class));
 		cd.addParameter(new Parameter("endDate", "endDate", Date.class));
-		cd.setQuery(CommonQueries.getPatientsWithAppointments());
+		cd.setQuery(CommonQueries.getChildOpdVisits());
 		return cd;
 	}
 }
