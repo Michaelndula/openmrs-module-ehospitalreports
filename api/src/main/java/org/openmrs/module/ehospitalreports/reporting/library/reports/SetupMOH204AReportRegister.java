@@ -1,4 +1,4 @@
-package org.openmrs.module.ehospitalreports.reports;
+package org.openmrs.module.ehospitalreports.reporting.library.reports;
 
 import org.openmrs.module.ehospitalreports.manager.eHospitalDataExportManager;
 import org.openmrs.module.ehospitalreports.reporting.library.cohorts.BaseCohortQueries;
@@ -10,12 +10,15 @@ import org.openmrs.module.reporting.ReportingException;
 import org.openmrs.module.reporting.evaluation.parameter.Mapped;
 import org.openmrs.module.reporting.report.ReportDesign;
 import org.openmrs.module.reporting.report.definition.ReportDefinition;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.*;
-
-import static org.openmrs.module.metadatasharing.MetadataSharingConsts.DATE_FORMAT;
+import java.io.InputStream;
+import java.util.Collections;
+import java.util.List;
+import java.util.Properties;
 
 @Component
 public class SetupMOH204AReportRegister extends eHospitalDataExportManager {
@@ -24,6 +27,7 @@ public class SetupMOH204AReportRegister extends eHospitalDataExportManager {
 	
 	private final BaseCohortQueries baseCohortQueries;
 	
+	@Autowired
 	public SetupMOH204AReportRegister(Moh204DatasetDefinition moh204DatasetDefinition, BaseCohortQueries baseCohortQueries) {
 		this.moh204DatasetDefinition = moh204DatasetDefinition;
 		this.baseCohortQueries = baseCohortQueries;
@@ -72,15 +76,21 @@ public class SetupMOH204AReportRegister extends eHospitalDataExportManager {
 	public List<ReportDesign> constructReportDesigns(ReportDefinition reportDefinition) {
 		ReportDesign reportDesign = null;
 		try {
-			reportDesign = createXlsReportDesign(reportDefinition, "MOH_204A.xls", "Out Patient Report for Children",
-			    getExcelDesignUuid(), null);
+			InputStream templateInputStream = this.getClass().getResourceAsStream("moh204A.xls");
+			if (templateInputStream == null) {
+				throw new FileNotFoundException("Template file moh204A.xls not found in the specified path");
+			}
+			
+			reportDesign = createXlsReportDesign(reportDefinition, templateInputStream.toString(),
+			    "Out Patient Report for Children", getExcelDesignUuid(), null);
+			
 			Properties props = new Properties();
-			props.put("repeatingSections", "sheet:1,row:4,dataset:MOH204A");
+			props.put("repeatingSections", "sheet:1,row:9,dataset:MOH204A");
 			props.put("sortWeight", "5000");
 			reportDesign.setProperties(props);
 		}
 		catch (IOException e) {
-			throw new ReportingException(e.toString());
+			throw new ReportingException("Error while creating report design: " + e.getMessage(), e);
 		}
 		
 		return Collections.singletonList(reportDesign);
