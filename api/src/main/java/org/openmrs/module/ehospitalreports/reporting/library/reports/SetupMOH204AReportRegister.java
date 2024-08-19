@@ -13,7 +13,6 @@ import org.openmrs.module.reporting.report.definition.ReportDefinition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
@@ -44,12 +43,12 @@ public class SetupMOH204AReportRegister extends eHospitalDataExportManager {
 	
 	@Override
 	public String getName() {
-		return "MOH 204 A";
+		return "Outpatient Register: under 5 years MOH 204A";
 	}
 	
 	@Override
 	public String getDescription() {
-		return "Out Patient Report for Children";
+		return "Out Patient Report for Children: MOH 204 A";
 	}
 	
 	@Override
@@ -75,16 +74,16 @@ public class SetupMOH204AReportRegister extends eHospitalDataExportManager {
 	public List<ReportDesign> constructReportDesigns(ReportDefinition reportDefinition) {
 		ReportDesign reportDesign = null;
 		try {
-			reportDesign = createXlsReportDesign(reportDefinition, "moh204A.xlsx",
-			    "MOH 204A: Out Patient Report for Children", getExcelDesignUuid(), null);
+			reportDesign = createXlsReportDesign(reportDefinition, "moh204a.xls",
+			    "Outpatient Register Report under five years", getExcelDesignUuid(), null);
 			
 			Properties props = new Properties();
-			props.put("repeatingSections", "sheet:3,row:9,dataset:MOH204A");
+			props.put("repeatingSections", "sheet:1,row:3,dataset:MOH204A");
 			props.put("sortWeight", "5000");
 			reportDesign.setProperties(props);
 		}
 		catch (IOException e) {
-			throw new ReportingException("Error while creating report design: " + e.getMessage(), e);
+			throw new ReportingException(e.toString());
 		}
 		
 		return Collections.singletonList(reportDesign);
