@@ -16,7 +16,7 @@
         "extensionPointId": "org.openmrs.module.ehospital.reports.registers",
         "type": "link",
         "label": "MOH 204 A",
-        "url": "ehospitalreports/runReport.page?reportDefinition=6ba23385-a11a-4dc0-bcec-dbb02f93e43a",
+        "url": "ehospitalreports/runReport.page?reportDefinition=26985654-8c25-11ed-8e58-b7227b8d5928",
         "order": 1,
         "requiredPrivilege": ""
       },
