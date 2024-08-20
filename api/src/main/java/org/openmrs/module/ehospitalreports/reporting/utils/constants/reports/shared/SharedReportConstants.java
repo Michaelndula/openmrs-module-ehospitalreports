@@ -2,7 +2,17 @@ package org.openmrs.module.ehospitalreports.reporting.utils.constants.reports.sh
 
 public class SharedReportConstants {
 	
-	public static final String MOH_204_REGISTER_REPORT_UUID = "26985654-8c25-11ed-8e58-b7227b8d5928";
+	public static final String MOH_204A_REGISTER_REPORT_UUID = "26985654-8c25-11ed-8e58-b7227b8d5928";
+
+	public static final String MOH_204B_REGISTER_REPORT_UUID = "b0f3fd70-047a-4312-a765-e26516ef6a1b";
+
+	public static final String MOH_705A_SUMMARY_REPORT_UUID = "407b2b40-f55d-4b8d-93d2-de00374004f6";
+
+	public static final String MOH_705B_SUMMARY_REPORT_UUID = "5ee40079-cff8-4468-9d7e-c4a7c3124918";
+
+	public static final String MOH_505_MONITORING_REPORT_UUID = "835ef99c-9655-4c67-b858-d55e660c904f";
+
+	public static final String MOH_717_WORKLOAD_SUMMARY_UUID = "ebab134b-6777-4f42-a25d-9b635fced798";
 	
 	public static final String OPD_REVISIT_UUID = "68391cec-08be-454d-8182-ff4e567de66d";
 	

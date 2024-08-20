@@ -15,7 +15,7 @@
         "id": "ehospital.moh.204.a.register",
         "extensionPointId": "org.openmrs.module.ehospital.reports.registers",
         "type": "link",
-        "label": "MOH 204 A",
+        "label": "Outpatient Register: Under 5 years MOH 204A",
         "url": "ehospitalreports/runReport.page?reportDefinition=26985654-8c25-11ed-8e58-b7227b8d5928",
         "order": 1,
         "requiredPrivilege": ""
@@ -24,63 +24,45 @@
         "id": "ehospital.moh.204.b.register",
         "extensionPointId": "org.openmrs.module.ehospital.reports.registers",
         "type": "link",
-        "label": "MOH 204 B",
-        "url": "ehospitalreports/runReport.page?reportDefinition=6ba23385-a11a-4dc0-bcec-dbb02f93e43a",
+        "label": "Outpatient Register: Over 5 years MOH 204B",
+        "url": "ehospitalreports/runReport.page?reportDefinition=b0f3fd70-047a-4312-a765-e26516ef6a1b",
         "order": 2,
         "requiredPrivilege": ""
       },
       {
-        "id": "ehospital.moh.505.register",
+        "id": "ehospital.moh.705.a.out.patient.summary",
         "extensionPointId": "org.openmrs.module.ehospital.reports.registers",
         "type": "link",
-        "label": "MOH 505",
-        "url": "ehospitalreports/runReport.page?reportDefinition=6ba23385-a11a-4dc0-bcec-dbb02f93e43a",
+        "label": "MOH 705A: Out Patient Under 5yr Summary",
+        "url": "ehospitalreports/runReport.page?reportDefinition=407b2b40-f55d-4b8d-93d2-de00374004f6",
         "order": 3,
         "requiredPrivilege": ""
       },
       {
-        "id": "ehospital.moh.705.a.register",
+        "id": "ehospital.moh.705.b.out.patient.summary",
         "extensionPointId": "org.openmrs.module.ehospital.reports.registers",
         "type": "link",
-        "label": "MOH 705 A",
-        "url": "ehospitalreports/runReport.page?reportDefinition=6ba23385-a11a-4dc0-bcec-dbb02f93e43a",
+        "label": "MOH 705B: Out Patient Under 5yr Summary",
+        "url": "ehospitalreports/runReport.page?reportDefinition=5ee40079-cff8-4468-9d7e-c4a7c3124918",
         "order": 4,
         "requiredPrivilege": ""
       },
       {
-        "id": "ehospital.moh.705.b.register",
+        "id": "ehospital.moh.505.weekly.epidemic.monitoring.form",
         "extensionPointId": "org.openmrs.module.ehospital.reports.registers",
         "type": "link",
-        "label": "MOH 705 B",
-        "url": "ehospitalreports/runReport.page?reportDefinition=6ba23385-a11a-4dc0-bcec-dbb02f93e43a",
+        "label": "Weekly Epidemic Monitoring Form",
+        "url": "ehospitalreports/runReport.page?reportDefinition=835ef99c-9655-4c67-b858-d55e660c904f",
         "order": 5,
         "requiredPrivilege": ""
       },
       {
-        "id": "ehospital.moh.immunization.summary.register",
+        "id": "ehospital.moh.717.workload.summary",
         "extensionPointId": "org.openmrs.module.ehospital.reports.registers",
         "type": "link",
-        "label": "MOH Immunization Summary",
-        "url": "ehospitalreports/runReport.page?reportDefinition=6ba23385-a11a-4dc0-bcec-dbb02f93e43a",
+        "label": "MOH 717 Workload Summary",
+        "url": "ehospitalreports/runReport.page?reportDefinition=ebab134b-6777-4f42-a25d-9b635fced798",
         "order": 6,
-        "requiredPrivilege": ""
-      },
-      {
-        "id": "ehospital.moh.workload.summary.register",
-        "extensionPointId": "org.openmrs.module.ehospital.reports.registers",
-        "type": "link",
-        "label": "MOH Workload Summary",
-        "url": "ehospitalreports/runReport.page?reportDefinition=6ba23385-a11a-4dc0-bcec-dbb02f93e43a",
-        "order": 7,
-        "requiredPrivilege": ""
-      },
-      {
-        "id": "ehospital.monthly.summary.quarterly.Report",
-        "extensionPointId": "org.openmrs.module.ehospital.reports.quarterly",
-        "type": "link",
-        "label": "Monthly Summary Report",
-        "url": "ehospitalreports/runReport.page?reportDefinition=6ba23385-a11a-4dc0-bcec-dbb02f93e43a",
-        "order": 8,
         "requiredPrivilege": ""
       }
     ]
