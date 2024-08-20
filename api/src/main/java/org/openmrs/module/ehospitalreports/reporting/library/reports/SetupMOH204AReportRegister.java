@@ -2,7 +2,7 @@ package org.openmrs.module.ehospitalreports.reporting.library.reports;
 
 import org.openmrs.module.ehospitalreports.manager.eHospitalDataExportManager;
 import org.openmrs.module.ehospitalreports.reporting.library.cohorts.BaseCohortQueries;
-import org.openmrs.module.ehospitalreports.reporting.library.datasets.Moh204DatasetDefinition;
+import org.openmrs.module.ehospitalreports.reporting.library.datasets.Moh204ADatasetDefinition;
 import org.openmrs.module.ehospitalreports.reporting.utils.EhospitalReportUtils;
 import org.openmrs.module.ehospitalreports.reporting.utils.constants.reports.shared.SharedReportConstants;
 import org.openmrs.module.ehospitalreports.reporting.utils.constants.templates.shared.SharedTemplatesConstants;
@@ -21,13 +21,13 @@ import java.util.Properties;
 @Component
 public class SetupMOH204AReportRegister extends eHospitalDataExportManager {
 	
-	private final Moh204DatasetDefinition moh204DatasetDefinition;
+	private final Moh204ADatasetDefinition moh204ADatasetDefinition;
 	
 	private final BaseCohortQueries baseCohortQueries;
 	
 	@Autowired
-	public SetupMOH204AReportRegister(Moh204DatasetDefinition moh204DatasetDefinition, BaseCohortQueries baseCohortQueries) {
-		this.moh204DatasetDefinition = moh204DatasetDefinition;
+	public SetupMOH204AReportRegister(Moh204ADatasetDefinition moh204ADatasetDefinition, BaseCohortQueries baseCohortQueries) {
+		this.moh204ADatasetDefinition = moh204ADatasetDefinition;
 		this.baseCohortQueries = baseCohortQueries;
 	}
 	
@@ -57,9 +57,9 @@ public class SetupMOH204AReportRegister extends eHospitalDataExportManager {
 		rd.setUuid(getUuid());
 		rd.setName(getName());
 		rd.setDescription(getDescription());
-		rd.addParameters(moh204DatasetDefinition.getParameters());
+		rd.addParameters(moh204ADatasetDefinition.getParameters());
 		rd.addDataSetDefinition("MOH204A",
-		    Mapped.mapStraightThrough(moh204DatasetDefinition.constructMoh204ADatasetDefinition()));
+		    Mapped.mapStraightThrough(moh204ADatasetDefinition.constructMoh204ADatasetDefinition()));
 		rd.setBaseCohortDefinition(EhospitalReportUtils.map(baseCohortQueries.getChildOpdPatients(),
 		    "startDate=${startDate},endDate=${endDate+23h}"));
 		return rd;
