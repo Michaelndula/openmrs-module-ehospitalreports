@@ -4,6 +4,7 @@
     ui.includeJavascript("appui", "bootstrap.min.js")
     ui.includeCss("appui", "bootstrap.min.css")
     ui.includeCss("ehospitalreports", "referenceapplication.css", 100)
+    ui.includeCss("ehospitalreports", "reportspage.css", 100)
 %>
 <script type="text/javascript">
 </script>

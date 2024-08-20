@@ -59,7 +59,7 @@ public class Moh204DatasetDefinition extends eHospitalBaseDataSet {
 		dsd.addColumn("id", new PatientIdDataDefinition(), "");
 		dsd.addColumn("Date", CommonDatasetDefinition.getEncounterDate(),
 		    "onOrAfter=${startDate},onOrBefore=${endDate+23h}", new EncounterDateConverter());
-		dsd.addColumn("OPD No", identifierDef, (String) null);
+		dsd.addColumn("OPD No.", identifierDef, (String) null);
 		dsd.addColumn("Revisit", getRevisit(), (String) null);
 		dsd.addColumn("Name", nameDef, "");
 		dsd.addColumn("Age", new AgeDataDefinition(), "", null);
