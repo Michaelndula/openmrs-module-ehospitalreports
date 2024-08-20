@@ -33,17 +33,17 @@ public class SetupMOH204AReportRegister extends eHospitalDataExportManager {
 	
 	@Override
 	public String getExcelDesignUuid() {
-		return SharedTemplatesConstants.MOH_204_REGISTER_TEMPLATE;
+		return SharedTemplatesConstants.MOH_204A_REGISTER_TEMPLATE;
 	}
 	
 	@Override
 	public String getUuid() {
-		return SharedReportConstants.MOH_204_REGISTER_REPORT_UUID;
+		return SharedReportConstants.MOH_204A_REGISTER_REPORT_UUID;
 	}
 	
 	@Override
 	public String getName() {
-		return "Outpatient Register: under 5 years MOH 204A";
+		return "Outpatient Register: Under 5 years MOH 204A";
 	}
 	
 	@Override
@@ -75,10 +75,10 @@ public class SetupMOH204AReportRegister extends eHospitalDataExportManager {
 		ReportDesign reportDesign = null;
 		try {
 			reportDesign = createXlsReportDesign(reportDefinition, "moh204a.xls",
-			    "Outpatient Register Report under five years", getExcelDesignUuid(), null);
+			    "Outpatient Register: Under 5 years MOH 204A", getExcelDesignUuid(), null);
 			
 			Properties props = new Properties();
-			props.put("repeatingSections", "sheet:1,row:3,dataset:MOH204A");
+			props.put("repeatingSections", "sheet:1,row:22,dataset:MOH204A");
 			props.put("sortWeight", "5000");
 			reportDesign.setProperties(props);
 		}

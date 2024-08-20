@@ -19,7 +19,6 @@ import org.openmrs.module.reporting.data.patient.definition.ConvertedPatientData
 import org.openmrs.module.reporting.data.patient.definition.PatientIdDataDefinition;
 import org.openmrs.module.reporting.data.patient.definition.PatientIdentifierDataDefinition;
 import org.openmrs.module.reporting.data.person.definition.*;
-import org.openmrs.module.reporting.data.visit.definition.VisitDataDefinition;
 import org.openmrs.module.reporting.dataset.definition.DataSetDefinition;
 import org.openmrs.module.reporting.dataset.definition.PatientDataSetDefinition;
 import org.openmrs.module.reporting.evaluation.parameter.Parameter;
@@ -59,7 +58,7 @@ public class Moh204DatasetDefinition extends eHospitalBaseDataSet {
 		dsd.addColumn("id", new PatientIdDataDefinition(), "");
 		dsd.addColumn("Date", CommonDatasetDefinition.getEncounterDate(),
 		    "onOrAfter=${startDate},onOrBefore=${endDate+23h}", new EncounterDateConverter());
-		dsd.addColumn("OPD No", identifierDef, (String) null);
+		dsd.addColumn("OPD No.", identifierDef, (String) null);
 		dsd.addColumn("Revisit", getRevisit(), (String) null);
 		dsd.addColumn("Name", nameDef, "");
 		dsd.addColumn("Age", new AgeDataDefinition(), "", null);

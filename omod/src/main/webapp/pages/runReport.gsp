@@ -4,8 +4,7 @@
     ui.includeJavascript("uicommons", "angular.min.js")
     ui.includeJavascript("ehospitalreports", "runReport.js")
     ui.includeCss("ehospitalreports", "referenceapplication.css", 100)
-
-
+    ui.includeCss("ehospitalreports", "reportspage.css", 100)
 
     def interactiveClass = context.loadClass("org.openmrs.module.reporting.report.renderer.InteractiveReportRenderer")
     def isInteractive = {
