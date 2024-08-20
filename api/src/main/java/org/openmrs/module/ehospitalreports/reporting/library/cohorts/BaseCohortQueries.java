@@ -32,4 +32,13 @@ public class BaseCohortQueries {
 		cd.setQuery(CommonQueries.getChildOpdVisits());
 		return cd;
 	}
+	
+	public CohortDefinition getAdultOpdPatients() {
+		SqlCohortDefinition cd = new SqlCohortDefinition();
+		cd.setName("Outpatient Report for Adults");
+		cd.addParameter(new Parameter("startDate", "startDate", Date.class));
+		cd.addParameter(new Parameter("endDate", "endDate", Date.class));
+		cd.setQuery(CommonQueries.getAdultOpdVisits());
+		return cd;
+	}
 }
