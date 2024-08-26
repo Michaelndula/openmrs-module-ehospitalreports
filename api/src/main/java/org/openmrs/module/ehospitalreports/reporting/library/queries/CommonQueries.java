@@ -185,6 +185,16 @@ public class CommonQueries {
 		return query;
 	}
 	
+	public static String getAdultOpdVisits() {
+		String query = "SELECT v.patient_id " + "FROM visit v "
+		        + "JOIN visit_type vt ON v.visit_type_id = vt.visit_type_id "
+		        + "JOIN person p ON v.patient_id = p.person_id " + "WHERE v.date_created BETWEEN :startDate AND :endDate "
+		        + "AND TIMESTAMPDIFF(YEAR, p.birthdate, CURDATE()) >= 5 "
+		        + "AND (vt.name = 'OPD Visit' OR vt.name = 'OPD Revisit')";
+		
+		return query;
+	}
+	
 	public static String getClientsWithinAgeLimit(Integer minAge, Integer maxAge) {
 		String query = "SELECT mdp.person_id FROM ssemr_etl.mamba_dim_person mdp WHERE mdp.voided=0 "
 		        + " AND TIMESTAMPDIFF(YEAR, mdp.birthdate, :effectiveDate) BETWEEN %d AND %d";
