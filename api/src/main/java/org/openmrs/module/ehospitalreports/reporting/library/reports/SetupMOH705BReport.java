@@ -11,12 +11,14 @@ import org.openmrs.module.reporting.evaluation.parameter.Mapped;
 import org.openmrs.module.reporting.report.ReportDesign;
 import org.openmrs.module.reporting.report.definition.ReportDefinition;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
 
+@Component
 public class SetupMOH705BReport extends eHospitalDataExportManager {
     private final Moh705bDatasetDefinition moh705bDatasetDefinition;
 
