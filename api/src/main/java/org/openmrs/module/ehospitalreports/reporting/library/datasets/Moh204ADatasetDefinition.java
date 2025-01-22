@@ -5,10 +5,10 @@ import org.openmrs.api.context.Context;
 import org.openmrs.module.ehospitalreports.reporting.calculation.WardAddressCalculation;
 import org.openmrs.module.ehospitalreports.reporting.data.converter.CalculationResultConverter;
 import org.openmrs.module.ehospitalreports.reporting.data.converter.EncounterDateConverter;
+import org.openmrs.module.ehospitalreports.reporting.library.data.converter.AgeFormatterConverter;
 import org.openmrs.module.ehospitalreports.reporting.library.data.converter.BooleanToYesNoConverter;
 import org.openmrs.module.ehospitalreports.reporting.library.data.converter.PersonAttributeDataConverter;
-import org.openmrs.module.ehospitalreports.reporting.library.data.definition.CalculationDataDefinition;
-import org.openmrs.module.ehospitalreports.reporting.library.data.definition.RevisitPatientCalculation;
+import org.openmrs.module.ehospitalreports.reporting.library.data.definition.*;
 import org.openmrs.module.ehospitalreports.reporting.utils.constants.reports.shared.SharedReportConstants;
 import org.openmrs.module.reporting.common.SortCriteria;
 import org.openmrs.module.reporting.data.DataDefinition;
@@ -55,69 +55,61 @@ public class Moh204ADatasetDefinition extends eHospitalBaseDataSet {
 		PersonAttributeType phoneNumber = Context.getPersonService().getPersonAttributeTypeByUuid(
 		    SharedReportConstants.PHONE_NUMBER_ATTRIBUTE_TYPE_UUID);
 		
+		WeightDataDefinition weightDataDefinition = new WeightDataDefinition();
+		weightDataDefinition.addParameter(new Parameter("endDate", "End Date", Date.class));
+		
+		HeightDataDefinition heightDataDefinition = new HeightDataDefinition();
+		heightDataDefinition.addParameter(new Parameter("endDate", "End Date", Date.class));
+		
+		BMIDataDefinition bmiDataDefinition = new BMIDataDefinition();
+		bmiDataDefinition.addParameter(new Parameter("endDate", "End Date", Date.class));
+		
+		SupplementationDataDefinition supplementationDataDefinition = new SupplementationDataDefinition();
+		supplementationDataDefinition.addParameter(new Parameter("endDate", "End Date", Date.class));
+		
+		VisualAcuityRightEyeDataDefinition visualAcuityRightEyeDataDefinition = new VisualAcuityRightEyeDataDefinition();
+		visualAcuityRightEyeDataDefinition.addParameter(new Parameter("endDate", "End Date", Date.class));
+		
+		VisualAcuityLeftEyeDataDefinition visualAcuityLeftEyeDataDefinition = new VisualAcuityLeftEyeDataDefinition();
+		visualAcuityLeftEyeDataDefinition.addParameter(new Parameter("endDate", "End Date", Date.class));
+		
+		DiagnosisDataDefinition diagnosisDataDefinition = new DiagnosisDataDefinition();
+		diagnosisDataDefinition.addParameter(new Parameter("endDate", "End Date", Date.class));
+		
+		TreatmentDataDefinition treatmentDataDefinition = new TreatmentDataDefinition();
+		treatmentDataDefinition.addParameter(new Parameter("endDate", "End Date", Date.class));
+		
+		OutcomeDataDefinition outcomeDataDefinition = new OutcomeDataDefinition();
+		outcomeDataDefinition.addParameter(new Parameter("endDate", "End Date", Date.class));
+		
+		ReferredFromDataDefinition referredFromDataDefinition = new ReferredFromDataDefinition();
+		referredFromDataDefinition.addParameter(new Parameter("endDate", "End Date", Date.class));
+		
+		ReferredToDataDefinition referredToDataDefinition = new ReferredToDataDefinition();
+		referredToDataDefinition.addParameter(new Parameter("endDate", "End Date", Date.class));
+		
 		dsd.addColumn("id", new PatientIdDataDefinition(), "");
 		dsd.addColumn("Date", CommonDatasetDefinition.getEncounterDate(),
 		    "onOrAfter=${startDate},onOrBefore=${endDate+23h}", new EncounterDateConverter());
 		dsd.addColumn("OPD No.", identifierDef, (String) null);
 		dsd.addColumn("Revisit", getRevisit(), (String) null);
 		dsd.addColumn("Name", nameDef, "");
-		dsd.addColumn("Age", new AgeDataDefinition(), "", null);
+		dsd.addColumn("Age", new AgeDataDefinition(), "", new AgeFormatterConverter());
 		dsd.addColumn("Gender", new GenderDataDefinition(), "", null);
 		dsd.addColumn("Ward", personWardAddress(), "", new CalculationResultConverter());
 		dsd.addColumn("Telephone", new PersonAttributeDataDefinition("Phone Number", phoneNumber), "",
 		    new PersonAttributeDataConverter());
-		dsd.addColumn(
-		    "Weight",
-		    CommonDatasetDefinition.getObservation(Context.getConceptService().getConceptByUuid(
-		        SharedReportConstants.WEIGHT_KG)), "onOrAfter=${startDate},onOrBefore=${endDate+23h}",
-		    new ObsValueConverter());
-		dsd.addColumn(
-		    "Height",
-		    CommonDatasetDefinition.getObservation(Context.getConceptService().getConceptByUuid(
-		        SharedReportConstants.HEIGHT_CM)), "onOrAfter=${startDate},onOrBefore=${endDate+23h}",
-		    new ObsValueConverter());
-		dsd.addColumn("BMI",
-		    CommonDatasetDefinition.getObservation(Context.getConceptService().getConceptByUuid(SharedReportConstants.BMI)),
-		    "onOrAfter=${startDate},onOrBefore=${endDate+23h}", new ObsValueConverter());
-		dsd.addColumn(
-		    "Supplementation",
-		    CommonDatasetDefinition.getObservation(Context.getConceptService().getConceptByUuid(
-		        SharedReportConstants.SUPPLEMENTATION)), "onOrAfter=${startDate},onOrBefore=${endDate+23h}",
-		    new ObsValueConverter());
-		dsd.addColumn(
-		    "Visual Acuity right eye",
-		    CommonDatasetDefinition.getObservation(Context.getConceptService().getConceptByUuid(
-		        SharedReportConstants.VISUAL_ACUITY_RIGHT_EYE)), "onOrAfter=${startDate},onOrBefore=${endDate+23h}",
-		    new ObsValueConverter());
-		dsd.addColumn(
-		    "Visual Acuity left eye",
-		    CommonDatasetDefinition.getObservation(Context.getConceptService().getConceptByUuid(
-		        SharedReportConstants.VISUAL_ACUITY_LEFT_EYE)), "onOrAfter=${startDate},onOrBefore=${endDate+23h}",
-		    new ObsValueConverter());
-		dsd.addColumn(
-		    "Diagnosis",
-		    CommonDatasetDefinition.getObservation(Context.getConceptService().getConceptByUuid(
-		        SharedReportConstants.DIAGNOSIS)), "onOrAfter=${startDate},onOrBefore=${endDate+23h}",
-		    new ObsValueConverter());
-		dsd.addColumn(
-		    "Treatment",
-		    CommonDatasetDefinition.getObservation(Context.getConceptService().getConceptByUuid(
-		        SharedReportConstants.TREATMENT)), "onOrAfter=${startDate},onOrBefore=${endDate+23h}",
-		    new ObsValueConverter());
-		dsd.addColumn(
-		    "Outcome",
-		    CommonDatasetDefinition.getObservation(Context.getConceptService().getConceptByUuid(
-		        SharedReportConstants.OUTCOME)), "onOrAfter=${startDate},onOrBefore=${endDate+23h}", new ObsValueConverter());
-		dsd.addColumn(
-		    "Referred From",
-		    CommonDatasetDefinition.getObservation(Context.getConceptService().getConceptByUuid(
-		        SharedReportConstants.REFFERED_FROM)), "onOrAfter=${startDate},onOrBefore=${endDate+23h}",
-		    new ObsValueConverter());
-		dsd.addColumn(
-		    "Referred To",
-		    CommonDatasetDefinition.getObservation(Context.getConceptService().getConceptByUuid(
-		        SharedReportConstants.REFFERED_TO)), "onOrAfter=${startDate},onOrBefore=${endDate+23h}",
-		    new ObsValueConverter());
+		dsd.addColumn("Weight", weightDataDefinition, "endDate=${endDate}");
+		dsd.addColumn("Height", heightDataDefinition, "endDate=${endDate}");
+		dsd.addColumn("BMI", bmiDataDefinition, "endDate=${endDate}");
+		dsd.addColumn("Supplementation", supplementationDataDefinition, "endDate=${endDate}");
+		dsd.addColumn("Visual Acuity right eye", visualAcuityRightEyeDataDefinition, "endDate=${endDate}");
+		dsd.addColumn("Visual Acuity left eye", visualAcuityLeftEyeDataDefinition, "endDate=${endDate}");
+		dsd.addColumn("Diagnosis", diagnosisDataDefinition, "endDate=${endDate}");
+		dsd.addColumn("Treatment", treatmentDataDefinition, "endDate=${endDate}");
+		dsd.addColumn("Outcome", outcomeDataDefinition, "endDate=${endDate}");
+		dsd.addColumn("Referred From", referredFromDataDefinition, "endDate=${endDate}");
+		dsd.addColumn("Referred To", referredToDataDefinition, "endDate=${endDate}");
 		
 		return dsd;
 	}
