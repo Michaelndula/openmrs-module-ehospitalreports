@@ -5,7 +5,6 @@ import org.openmrs.api.context.Context;
 import org.openmrs.module.ehospitalreports.reporting.calculation.WardAddressCalculation;
 import org.openmrs.module.ehospitalreports.reporting.data.converter.CalculationResultConverter;
 import org.openmrs.module.ehospitalreports.reporting.data.converter.EncounterDateConverter;
-import org.openmrs.module.ehospitalreports.reporting.library.data.converter.AgeFormatterConverter;
 import org.openmrs.module.ehospitalreports.reporting.library.data.converter.BooleanToYesNoConverter;
 import org.openmrs.module.ehospitalreports.reporting.library.data.converter.PersonAttributeDataConverter;
 import org.openmrs.module.ehospitalreports.reporting.library.data.definition.*;
@@ -94,7 +93,7 @@ public class Moh204ADatasetDefinition extends eHospitalBaseDataSet {
 		dsd.addColumn("OPD No.", identifierDef, (String) null);
 		dsd.addColumn("Revisit", getRevisit(), (String) null);
 		dsd.addColumn("Name", nameDef, "");
-		dsd.addColumn("Age", new AgeDataDefinition(), "", new AgeFormatterConverter());
+		dsd.addColumn("Age", new AgeDataDefinition(), "", null);
 		dsd.addColumn("Gender", new GenderDataDefinition(), "", null);
 		dsd.addColumn("Ward", personWardAddress(), "", new CalculationResultConverter());
 		dsd.addColumn("Telephone", new PersonAttributeDataDefinition("Phone Number", phoneNumber), "",
